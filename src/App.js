@@ -26,6 +26,8 @@ function App() {
                     <Routes>
                         <Route exact path="/" element={<Dashboard />} />
                    
+                        <Route exact path="green" element={<Dashboard />} />
+                        <Route exact path="green/dashboard" element={<Dashboard />} />
                         <Route exact path="dashboard" element={<Dashboard />} />
                         <Route exact path="support" element={<Support />} />
                         <Route exact path="documentation" element={<Documentation />} />
