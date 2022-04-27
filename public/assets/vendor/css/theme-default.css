@@ -568,8 +568,8 @@ a:hover {
 }
 
 .bg-navbar-theme {
-  background-color: #fff !important;
-  color: #697a8d;
+  background-color: #128C7E !important;
+  color: #fff;
 }
 .bg-navbar-theme .navbar-brand,
 .bg-navbar-theme .navbar-brand a {
@@ -592,7 +592,7 @@ a:hover {
 .bg-navbar-theme .navbar-nav > .nav-link,
 .bg-navbar-theme .navbar-nav > .nav-item > .nav-link,
 .bg-navbar-theme .navbar-nav > .nav > .nav-item > .nav-link {
-  color: #697a8d;
+  color: #fff;
 }
 .bg-navbar-theme .navbar-nav > .nav-link:hover, .bg-navbar-theme .navbar-nav > .nav-link:focus,
 .bg-navbar-theme .navbar-nav > .nav-item > .nav-link:hover,
@@ -633,7 +633,7 @@ a:hover {
 }
 
 .layout-navbar {
-  background-color: rgba(255, 255, 255, 0.95) !important;
+  
   -webkit-backdrop-filter: saturate(200%) blur(6px);
           backdrop-filter: saturate(200%) blur(6px);
 }

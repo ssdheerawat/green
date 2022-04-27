@@ -9,63 +9,63 @@ function Dashboard() {
 
   return (
     <div>
-      <table class="table dash-link-tbl table-bordered ">
+      <table className="table dash-link-tbl table-bordered ">
 			<tbody><tr>
-				<td class="disabledClick">
-					<a href="https://onlycard.in/green/public/admin/cycles/issue" class="dash-link">
-					  <i class="nav-icon fas fa-bicycle"></i>
+				<td className="disabledClick">
+					<a href="https://onlycard.in/green/public/admin/cycles/issue" className="dash-link">
+					  <i className="nav-icon fas fa-bicycle"></i>
 					  <p>Issue</p>
 					</a>
 				</td>
-				<td class="disabledClick">
-					<a href="https://onlycard.in/green/public/admin/cycles/deposit" class="dash-link">
-					  <i class="nav-icon fa fa-handshake"></i>
+				<td className="disabledClick">
+					<a href="https://onlycard.in/green/public/admin/cycles/deposit" className="dash-link">
+					  <i className="nav-icon fa fa-handshake"></i>
 					  <p>Deposit</p>
 					</a>
 				</td>
 				<td>
-					<a href="https://onlycard.in/green/public/admin/cycles/onroad" class="dash-link">
-					  <i class="nav-icon fas fa-bicycle"></i>
+					<a href="https://onlycard.in/green/public/admin/cycles/onroad" className="dash-link">
+					  <i className="nav-icon fas fa-bicycle"></i>
 					  <p>On Road</p>
 					</a>
 				</td>
 			</tr>
 			<tr>
-				<td class="disabledClick">
-					<a href="https://onlycard.in/green/public/admin/stocktransfers/transfer" class="dash-link">
-					  <i class="nav-icon fas fas fa-exchange-alt"></i>
+				<td className="disabledClick">
+					<a href="https://onlycard.in/green/public/admin/stocktransfers/transfer" className="dash-link">
+					  <i className="nav-icon fas fas fa-exchange-alt"></i>
 					  <p>Transfer</p>
 					</a>
 				</td>
-				<td class="disabledClick">
-					<a href="https://onlycard.in/green/public/admin/stocktransfers/receive" class="dash-link">
-					  <i class="nav-icon fas fa-download"></i>
+				<td className="disabledClick">
+					<a href="https://onlycard.in/green/public/admin/stocktransfers/receive" className="dash-link">
+					  <i className="nav-icon fas fa-download"></i>
 					  <p>Receive</p>
 					</a>
 				</td>
 				<td>
-					<a href="https://onlycard.in/green/public/admin/users/recharge" class="dash-link">
-					  <i class="nav-icon fa fa-plus"></i>
+					<a href="https://onlycard.in/green/public/admin/users/recharge" className="dash-link">
+					  <i className="nav-icon fa fa-plus"></i>
 					  <p>Recharge</p>
 					</a>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<a href="https://onlycard.in/green/public/admin/attendances/create" class="dash-link">
-					  <i class="nav-icon fas fa-male"></i>
+					<a href="https://onlycard.in/green/public/admin/attendances/create" className="dash-link">
+					  <i className="nav-icon fas fa-male"></i>
 					  <p>Self Attendance</p>
 					</a>
 				</td>
 				<td>
-					<a href="https://onlycard.in/green/public/admin/transactions" class="dash-link">
-					  <i class="nav-icon fas fa-book"></i>
+					<a href="https://onlycard.in/green/public/admin/transactions" className="dash-link">
+					  <i className="nav-icon fas fa-book"></i>
 					  <p>Transaction</p>
 					</a>
 				</td>
 				<td>
-					<a href="https://onlycard.in/green/public/admin/users/create" class="dash-link">
-					  <i class="nav-icon fas fa-share-alt"></i>
+					<a href="https://onlycard.in/green/public/admin/users/create" className="dash-link">
+					  <i className="nav-icon fas fa-share-alt"></i>
 					  <p>App Link</p>
 					</a>
 				</td>
