@@ -20,11 +20,13 @@ let menu, animate;
     window.Helpers.scrollToActive((animate = false));
     window.Helpers.mainMenu = menu;
   });
-
+  
   // Initialize menu togglers and bind click on each
   let menuToggler = document.querySelectorAll('.layout-menu-toggle');
+  console.log(menuToggler);
   menuToggler.forEach(item => {
     item.addEventListener('click', event => {
+      alert("menuToggler");
       event.preventDefault();
       window.Helpers.toggleCollapsed();
     });
