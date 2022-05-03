@@ -1,15 +1,17 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, Link, useParams } from "react-router-dom";
-import logo from './logo.svg';
+import { Route, Routes } from "react-router-dom";
+//import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Dashboard from './Pages/Dashboard';
 import Support from './Pages/Support';
 import Documentation from './Pages/Documentation';
+import SelfAtendance from './Pages/SelfAtendance';
 
 function App() {
   return (
+    
     <div className="App">
         <div className="layout-wrapper layout-content-navbar">
           <div className="layout-container">
@@ -21,11 +23,17 @@ function App() {
 
               <div className="content-wrapper">
 
-                <BrowserRouter>
+          
+
+                
+
+                
              
                     <Routes>
+                      
                         <Route exact path="/" element={<Dashboard />} />
                    
+                        <Route exact path="self-atendance" element={<SelfAtendance />} />
                         <Route exact path="green" element={<Dashboard />} />
                         <Route exact path="green/dashboard" element={<Dashboard />} />
                         <Route exact path="dashboard" element={<Dashboard />} />
@@ -40,7 +48,7 @@ function App() {
                           }
                         />
                     </Routes>
-                </BrowserRouter>
+                
               </div>
             </div>
           </div>
@@ -50,16 +58,7 @@ function App() {
   );
 }
 
+//const Dashboard1= () => <h2>You are in the Dashboard</h2>
+//const Profile= () => <h2>You are in the Profile</h2>
+
 export default App;
-
-function Child() {
-  // We can use the `useParams` hook here to access
-  // the dynamic pieces of the URL.
-  let { id } = useParams();
-
-  return (
-    <div>
-      <h3>ID: {id}</h3>
-    </div>
-  );
-}

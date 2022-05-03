@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import { BrowserRouter, Route, Routes, Link, useParams } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 
 
 function Dashboard() {
@@ -9,66 +9,88 @@ function Dashboard() {
 
   return (
     <div>
+		
       <table className="table dash-link-tbl table-bordered ">
 			<tbody><tr>
 				<td className="disabledClick">
-					<a href="https://onlycard.in/green/public/admin/cycles/issue" className="dash-link">
-					  <i className="nav-icon fas fa-bicycle"></i>
-					  <p>Issue</p>
-					</a>
+						<Link to="/issue" className="dash-link">
+								<div class="card-icon">
+									<i className="tf-icons bx bx-cycling"></i>
+								</div>
+								<div class="card-title">Issue</div>
+						</Link>
 				</td>
 				<td className="disabledClick">
-					<a href="https://onlycard.in/green/public/admin/cycles/deposit" className="dash-link">
-					  <i className="nav-icon fa fa-handshake"></i>
-					  <p>Deposit</p>
-					</a>
+						<Link to="/deposit" className="dash-link">
+								<div class="card-icon">
+									<i className="tf-icons bx bx-briefcase"></i>
+									</div>
+								<div class="card-title">Deposit</div>
+						</Link>
 				</td>
-				<td>
-					<a href="https://onlycard.in/green/public/admin/cycles/onroad" className="dash-link">
-					  <i className="nav-icon fas fa-bicycle"></i>
-					  <p>On Road</p>
-					</a>
+				<td className="disabledClick">
+						<Link to="/onroad" className="dash-link">
+								<div class="card-icon">
+									<i className="tf-icons bx bx-trending-up"></i>
+								</div>
+								<div class="card-title">On Road</div>
+						</Link>
 				</td>
+		
 			</tr>
 			<tr>
-				<td className="disabledClick">
-					<a href="https://onlycard.in/green/public/admin/stocktransfers/transfer" className="dash-link">
-					  <i className="nav-icon fas fas fa-exchange-alt"></i>
-					  <p>Transfer</p>
-					</a>
+			<td className="disabledClick">
+						<Link to="/transfer" className="dash-link">
+								<div class="card-icon">
+									<i className="tf-icons bx bx-transfer"></i>
+								</div>
+								<div class="card-title">Transfer</div>
+						</Link>
 				</td>
 				<td className="disabledClick">
-					<a href="https://onlycard.in/green/public/admin/stocktransfers/receive" className="dash-link">
-					  <i className="nav-icon fas fa-download"></i>
-					  <p>Receive</p>
-					</a>
+						<Link to="/receive" className="dash-link">
+								<div class="card-icon">
+									<i className="tf-icons bx bx-download"></i>
+								</div>
+								<div class="card-title">Receive</div>
+						</Link>
 				</td>
-				<td>
-					<a href="https://onlycard.in/green/public/admin/users/recharge" className="dash-link">
-					  <i className="nav-icon fa fa-plus"></i>
-					  <p>Recharge</p>
-					</a>
+				<td className="disabledClick">
+						<Link to="/open-stand" className="dash-link">
+								<div class="card-icon">
+									<i className="tf-icons bx bx-lock-open"></i>
+								</div>
+								<div class="card-title">Open Stand</div>
+						</Link>
 				</td>
+			
 			</tr>
 			<tr>
-				<td>
-					<a href="https://onlycard.in/green/public/admin/attendances/create" className="dash-link">
-					  <i className="nav-icon fas fa-male"></i>
-					  <p>Self Attendance</p>
-					</a>
+			<td className="disabledClick">
+						<Link to="/self-atendance" className="dash-link">
+								<div class="card-icon">
+									<i className="tf-icons bx bx-user-check"></i>
+								</div>
+								<div class="card-title">Self Attendance</div>
+						</Link>
 				</td>
-				<td>
-					<a href="https://onlycard.in/green/public/admin/transactions" className="dash-link">
-					  <i className="nav-icon fas fa-book"></i>
-					  <p>Transaction</p>
-					</a>
+				<td className="disabledClick">
+						<Link to="/transaction" className="dash-link">
+								<div class="card-icon">
+									<i className="tf-icons bx bx-wallet-alt"></i>
+								</div>
+								<div class="card-title">Transaction</div>
+						</Link>
 				</td>
-				<td>
-					<a href="https://onlycard.in/green/public/admin/users/create" className="dash-link">
-					  <i className="nav-icon fas fa-share-alt"></i>
-					  <p>App Link</p>
-					</a>
+				<td className="disabledClick">
+						<Link to="/app-link" className="dash-link">
+								<div class="card-icon">
+									<i className="tf-icons bx bx-share-alt"></i>
+								</div>
+								<div class="card-title">App Link</div>
+						</Link>
 				</td>
+				
 			</tr>
 			
 			</tbody></table>

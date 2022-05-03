@@ -1,9 +1,9 @@
-import React, {Component} from "react";
+import React from "react";
 
 
 class Support extends React.Component {
   render() {
-  return <h2>This is Support Page </h2>
+  return <h2>This is Support Page  1111 </h2>
    
   }
 }

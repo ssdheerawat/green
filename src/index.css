@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+	.dash-link-tbl td{text-align:center;}
+    .dash-link-tbl td .dash-link{font-weight: bold; color:#00008B;font-size: 14px;}
+	.dash-link-tbl td .dash-link i{font-size: 35px;}
+	.dash-link-tbl.table-bordered, .dash-link-tbl.table-bordered td {
+		border: 1px solid #dee2e6;
+	}
+	.dash-link-tbl.table-bordered td{width:33%;padding: 10px 0px;}
+	.dash-link-tbl.table-bordered td p{margin:0px;}
+
