@@ -13,7 +13,7 @@ function SelfAtendance() {
   const [showDialog, setDiaglog] = useState(false);
   const [processing, setProcessing] = useState(false);
 
-  const [selected, setSelected] = useState("environment");
+  const [selected, setSelected] = useState("rear");
   const [errorMessage, setErrorMessage] = useState(null);
 
 
@@ -47,7 +47,8 @@ function SelfAtendance() {
       </h2>
       <select onChange={(e) => setSelected(e.target.value)}>
         <option value={"environment"}>Back Camera</option>
-        <option value={"user"}>Front Camera</option>
+        <option value={"user"}>Front Camera</option>rear
+        <option value={"rear"}>rear Camera</option>
       </select>
       {showDialog && (
         <div className="dialog">
