@@ -60,7 +60,7 @@ function Dashboard() {
 								<div class="card-icon">
 									<i className="tf-icons bx bx-lock-open"></i>
 								</div>
-								<div class="card-title">Open Stand</div>
+								<div class="card-title">Open Stand 1</div>
 						</Link>
 				</td>
 			
