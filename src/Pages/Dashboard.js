@@ -14,26 +14,26 @@ function Dashboard() {
 			<tbody><tr>
 				<td className="disabledClick">
 						<Link to="/issue" className="dash-link">
-								<div class="card-icon">
+								<div className="card-icon">
 									<i className="tf-icons bx bx-cycling"></i>
 								</div>
-								<div class="card-title">Issue</div>
+								<div className="card-title">Issue</div>
 						</Link>
 				</td>
 				<td className="disabledClick">
 						<Link to="/deposit" className="dash-link">
-								<div class="card-icon">
+								<div className="card-icon">
 									<i className="tf-icons bx bx-briefcase"></i>
 									</div>
-								<div class="card-title">Deposit</div>
+								<div className="card-title">Deposit</div>
 						</Link>
 				</td>
 				<td className="disabledClick">
 						<Link to="/onroad" className="dash-link">
-								<div class="card-icon">
+								<div className="card-icon">
 									<i className="tf-icons bx bx-trending-up"></i>
 								</div>
-								<div class="card-title">On Road</div>
+								<div className="card-title">On Road</div>
 						</Link>
 				</td>
 		
@@ -41,26 +41,26 @@ function Dashboard() {
 			<tr>
 			<td className="disabledClick">
 						<Link to="/transfer" className="dash-link">
-								<div class="card-icon">
+								<div className="card-icon">
 									<i className="tf-icons bx bx-transfer"></i>
 								</div>
-								<div class="card-title">Transfer</div>
+								<div className="card-title">Transfer</div>
 						</Link>
 				</td>
 				<td className="disabledClick">
 						<Link to="/receive" className="dash-link">
-								<div class="card-icon">
+								<div className="card-icon">
 									<i className="tf-icons bx bx-download"></i>
 								</div>
-								<div class="card-title">Receive</div>
+								<div className="card-title">Receive</div>
 						</Link>
 				</td>
 				<td className="disabledClick">
 						<Link to="/open-stand" className="dash-link">
-								<div class="card-icon">
+								<div className="card-icon">
 									<i className="tf-icons bx bx-lock-open"></i>
 								</div>
-								<div class="card-title">Open Stand 3</div>
+								<div className="card-title">Open Stand 3</div>
 						</Link>
 				</td>
 			
@@ -68,26 +68,26 @@ function Dashboard() {
 			<tr>
 			<td className="disabledClick">
 						<Link to="/self-atendance" className="dash-link">
-								<div class="card-icon">
+								<div className="card-icon">
 									<i className="tf-icons bx bx-user-check"></i>
 								</div>
-								<div class="card-title">Self Attendance</div>
+								<div className="card-title">Self Attendance</div>
 						</Link>
 				</td>
 				<td className="disabledClick">
 						<Link to="/transaction" className="dash-link">
-								<div class="card-icon">
+								<div className="card-icon">
 									<i className="tf-icons bx bx-wallet-alt"></i>
 								</div>
-								<div class="card-title">Transaction</div>
+								<div className="card-title">Transaction</div>
 						</Link>
 				</td>
 				<td className="disabledClick">
 						<Link to="/app-link" className="dash-link">
-								<div class="card-icon">
+								<div className="card-icon">
 									<i className="tf-icons bx bx-share-alt"></i>
 								</div>
-								<div class="card-title">App Link</div>
+								<div className="card-title">App Link</div>
 						</Link>
 				</td>
 				
