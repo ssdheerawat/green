@@ -199,6 +199,29 @@ const QRCodeBox = (props) => {
       }
   };
 
+  const ReceiveCycleAPI = async (qrCode, qrtype, qraction) => {
+
+
+
+    const response = await api({
+      url: 'staff/receive',
+      methode: "POST",
+      data: {"cycle_id": qrCode},
+    });
+
+    console.log("response===", response);
+    setIsQRloading(false);
+
+    if (response.status) {
+
+        toast.success(response.message);
+        //navigate("/dashboard", { replace: true });
+    }else {
+
+        toast.error(response.message);
+      }
+  };
+
   
 
 
@@ -216,6 +239,9 @@ const QRCodeBox = (props) => {
     }
     else if(qraction === 'transfer') {
       //TransferCycleAPI('MTAwMg==', qrtype, qraction );
+    }
+    else if(qraction === 'receive') {
+      ReceiveCycleAPI('MTAwMg==', qrtype, qraction );
     }
     
     //

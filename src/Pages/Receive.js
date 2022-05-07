@@ -7,10 +7,10 @@ const Receive = (props) => {
   return (
     <>
     <div  style={{ alignItems: 'center' }}>
-    <h5 className="card-header">Issue Cycle</h5>
+    <h5 className="card-header">Receive Cycle</h5>
 
 
-    <QRCodeBox heading={'Scan User QR Code'} qrtype={'user'} qraction={'issue'} />
+    <QRCodeBox heading={'Scan Cycle QR Code Code'} qrtype={'cycle'} qraction={'receive'} />
 
     </div>
    
