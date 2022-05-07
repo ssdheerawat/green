@@ -128,10 +128,18 @@ const QRCodeBox = (props) => {
         navigate("/dashboard", { replace: true });
     }else {
 
+
+        Cookies.set(
+          "errorMsg",
+          response.message
+        );
+
      
         // setisLoading(flase);
         toast.error(response.message);
+
         // alert("Something went wrong");
+        navigate("/issue", { replace: true });
       }
   };
 
@@ -192,6 +200,16 @@ const QRCodeBox = (props) => {
 
   useEffect(() => {
     //setIsloading(false);
+    let errorMsg = Cookies.get("errorMsg");
+
+    if(errorMsg !== "") {
+      toast.error(errorMsg);
+      Cookies.set(
+        "errorMsg",
+        ""
+        );
+
+    }
     }, []);
 
 
@@ -223,21 +241,26 @@ const QRCodeBox = (props) => {
           facingMode: 'environment'
       }}
        onResult={(result, error) => {
-          if (!!result && !isloading) {
-            setIsloading(true);
-            setData(result?.text + "=="+qrtype);
-              if(qrtype === 'stand') {
-                SelfAtendanceAPI(result?.text, qrtype, qraction );
-              }
-              else if(qrtype === 'cycle' && qraction==="issue") {
-                IssueCycle(result?.text, qrtype, qraction );
-              }
-              else if(qrtype === 'user' && qraction==="issue" ) {
-                IssueCycleAPI(result?.text, qrtype, qraction );
-              }
-              else if(qrtype === 'cycle' && qraction==="deposit" ) {
-                DepositCycleAPI(result?.text, qrtype, qraction );
-              }
+          if (!!result ) {
+            if(isloading){
+              console.log("Already Loading ....");
+            }
+            else {
+              setIsloading(true);
+              setData(result?.text + "=="+qrtype);
+                if(qrtype === 'stand') {
+                  SelfAtendanceAPI(result?.text, qrtype, qraction );
+                }
+                else if(qrtype === 'cycle' && qraction==="issue") {
+                  IssueCycle(result?.text, qrtype, qraction );
+                }
+                else if(qrtype === 'user' && qraction==="issue" ) {
+                  IssueCycleAPI(result?.text, qrtype, qraction );
+                }
+                else if(qrtype === 'cycle' && qraction==="deposit" ) {
+                  DepositCycleAPI(result?.text, qrtype, qraction );
+                }
+            }
           }
 
           if (!!error) {
