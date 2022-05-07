@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 
-//import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from "js-cookie";
 
@@ -18,6 +18,16 @@ function Dashboard() {
 
   useEffect(() => {
 	let loginStand = Cookies.get("loginStand");
+	let successMsg = Cookies.get("successMsg");
+
+	if(successMsg !== "") {
+		toast.success(successMsg);
+		Cookies.set(
+			"successMsg",
+			""
+		  );
+
+	}
 	console.log("loginStand", loginStand);
 	if(loginStand && loginStand !== "") {
 		setIsloginStand(true);
@@ -114,6 +124,7 @@ IsloginStand
 			</tr>
 			
 			</tbody></table>
+			<ToastContainer/>
     </div>
   );
 }

@@ -21,9 +21,7 @@ const QRCodeBox = (props) => {
   const [on, toggle] = useTorchLight(streamRef.current);
   const [isloading, setIsloading] = useState(false);
 
-  const [showDialog, setDiaglog] = useState(false);
-  const [processing, setProcessing] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
+
 
 
   const qrtype = props.qrtype;
@@ -64,11 +62,20 @@ const QRCodeBox = (props) => {
               );
         }
 
+        Cookies.set(
+          "successMsg",
+          response.message
+        );
+
+        
+
             
         toast.success(response.message);
         navigate("/dashboard", { replace: true });
     }else {
         // setisLoading(flase);
+        
+
         toast.error(response.message);
         // alert("Something went wrong");
       }
@@ -104,8 +111,18 @@ const QRCodeBox = (props) => {
     });
 
     console.log("response===", response);
+    Cookies.set(
+      "cycleQrCode",
+      ""
+    );
 
     if (response.status) {
+
+        
+        Cookies.set(
+          "successMsg",
+          response.message
+        );
 
         toast.success(response.message);
         navigate("/dashboard", { replace: true });
@@ -130,6 +147,12 @@ const QRCodeBox = (props) => {
     console.log("response===", response);
 
     if (response.status) {
+
+       Cookies.set(
+        "successMsg",
+        response.message
+      );
+      
 
         toast.success(response.message);
         navigate("/dashboard", { replace: true });
@@ -173,17 +196,7 @@ const QRCodeBox = (props) => {
 
 
    
-    const handleScan = async (scanData) => {
-      console.log(`loaded data data`, scanData);
-      if (scanData && scanData !== "" && !showDialog && !processing) {
-        console.log(`loaded >>>`, scanData);
-        // setPrecScan(scanData);
-        //await fetchData({ qr: scanData });
-      }
-    };
-    const handleError = (err) => {
-      console.error(err);
-    };
+
 
 
  
@@ -210,7 +223,7 @@ const QRCodeBox = (props) => {
           facingMode: 'environment'
       }}
        onResult={(result, error) => {
-          if (!!result) {
+          if (!!result && !isloading) {
             setIsloading(true);
             setData(result?.text + "=="+qrtype);
               if(qrtype === 'stand') {
@@ -228,6 +241,7 @@ const QRCodeBox = (props) => {
           }
 
           if (!!error) {
+            
             console.info("QR error=====",error);
             //setData(error);
           }
