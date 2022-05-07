@@ -20,7 +20,7 @@ const QRCodeBox = (props) => {
 
 
   const [on, toggle] = useTorchLight(streamRef.current);
-  const [isloading, setIsloading] = useState(false);
+  const [IsQRloading, setIsQRloading] = useState(false);
   const [TransferList, setTransferList] = useState([]);
 
 
@@ -75,9 +75,7 @@ const QRCodeBox = (props) => {
         toast.success(response.message);
         navigate("/dashboard", { replace: true });
     }else {
-        // setisLoading(flase);
-        
-
+  
         toast.error(response.message);
         // alert("Something went wrong");
       }
@@ -85,7 +83,6 @@ const QRCodeBox = (props) => {
 
   const IssueCycle = async (qrCode, qrtype, qraction) => {
 
-    //setIsloading(true);
     console.log("Get Cycle QR ");
 
     Cookies.set(
@@ -136,8 +133,7 @@ const QRCodeBox = (props) => {
           response.message
         );
 
-     
-        // setisLoading(flase);
+
         toast.error(response.message);
 
         // alert("Something went wrong");
@@ -184,6 +180,7 @@ const QRCodeBox = (props) => {
     });
 
     console.log("response===", response);
+    setIsQRloading(false);
 
     if (response.status) {
 
@@ -234,7 +231,7 @@ const QRCodeBox = (props) => {
 
 
   useEffect(() => {
-    //setIsloading(false);
+
     let errorMsg = Cookies.get("errorMsg");
 
     if(errorMsg !== "") {
@@ -264,54 +261,58 @@ const QRCodeBox = (props) => {
 
     
 
-    {isloading ? <div className="loadingQr">
+    {IsQRloading ? <div className="loadingQr">
     <div>Please Wait....</div>
-  </div> :null}
+  </div> :
+
+<QrReader
+constraints={{
+   facingMode: 'environment'
+}}
+onResult={(result, error) => {
+   if (!!result ) {
+     if(IsQRloading){
+       console.log("Already Loading ....");
+     }
+     else {
+      setIsQRloading(true);
+       setData(result?.text);
+         if(qrtype === 'stand') {
+           SelfAtendanceAPI(result?.text, qrtype, qraction );
+         }
+         else if(qrtype === 'cycle' && qraction==="issue") {
+           IssueCycle(result?.text, qrtype, qraction );
+         }
+         else if(qrtype === 'user' && qraction==="issue" ) {
+           IssueCycleAPI(result?.text, qrtype, qraction );
+         }
+         else if(qrtype === 'cycle' && qraction==="deposit" ) {
+           DepositCycleAPI(result?.text, qrtype, qraction );
+         }
+         else if(qrtype === 'cycle' && qraction === 'transfer') {
+           TransferCycleAPI(result?.text,  qrtype, qraction );
+         }
+     }
+   }
+
+   if (!!error) {
+     
+     console.info("QR error=====",error);
+     //setData(error);
+   }
+ }}
+ 
+ delay={1000}
+
+ style={{ width: 300, height:250 }}
+/>
+  
+  }
 
     
 
     
-      <QrReader
-       constraints={{
-          facingMode: 'environment'
-      }}
-       onResult={(result, error) => {
-          if (!!result ) {
-            if(isloading){
-              console.log("Already Loading ....");
-            }
-            else {
-              setIsloading(true);
-              setData(result?.text);
-                if(qrtype === 'stand') {
-                  SelfAtendanceAPI(result?.text, qrtype, qraction );
-                }
-                else if(qrtype === 'cycle' && qraction==="issue") {
-                  IssueCycle(result?.text, qrtype, qraction );
-                }
-                else if(qrtype === 'user' && qraction==="issue" ) {
-                  IssueCycleAPI(result?.text, qrtype, qraction );
-                }
-                else if(qrtype === 'cycle' && qraction==="deposit" ) {
-                  DepositCycleAPI(result?.text, qrtype, qraction );
-                }
-                else if(qrtype === 'cycle' && qraction === 'transfer') {
-                  TransferCycleAPI(result?.text,  qrtype, qraction );
-                }
-            }
-          }
-
-          if (!!error) {
-            
-            console.info("QR error=====",error);
-            //setData(error);
-          }
-        }}
-        
-        delay={500}
       
-        style={{ width: 300, height:250 }}
-      />
       </div>
 
       <i className="tf-icons bx bx-torch"></i>
@@ -335,16 +336,13 @@ const QRCodeBox = (props) => {
   <tr data-index={index}>  
     <td>{index+1}</td>  
     <td>{TransferList1}</td>  
-    <td>
-    
-      
-     </td>   
+    <td></td>   
   </tr>  
 ))}  
 
 </table>  
       
-      :<h2>aaaaaaaaaaaaa</h2>}
+      :null}
       
 
 

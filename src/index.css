@@ -70,3 +70,7 @@ code {
   /* height: 50px; */
   padding: 30px;
 }
+
+.card1{padding: 0px; margin: 0px;}
+.card1 section{padding: 0px; margin: 0px;}
+.card1 video{padding: 0px; margin: 0px;}
