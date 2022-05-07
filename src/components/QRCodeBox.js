@@ -186,7 +186,7 @@ const QRCodeBox = (props) => {
       console.log(`loaded data data`, scanData);
       if (scanData && scanData !== "" && !showDialog && !processing) {
         console.log(`loaded >>>`, scanData);
-        // setPrecScan(scanData);
+        setPrecScan(scanData);
         //await fetchData({ qr: scanData });
       }
     };
