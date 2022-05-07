@@ -21,11 +21,8 @@ const QRCodeBox = (props) => {
   const [on, toggle] = useTorchLight(streamRef.current);
   const [isloading, setIsloading] = useState(false);
 
-  const [code, setCode] = useState(null);
   const [showDialog, setDiaglog] = useState(false);
   const [processing, setProcessing] = useState(false);
-  const [precScan, setPrecScan] = useState("");
-  const [selected, setSelected] = useState("environment");
   const [errorMessage, setErrorMessage] = useState(null);
 
 
@@ -152,13 +149,13 @@ const QRCodeBox = (props) => {
 
 
   if(qrtype === 'stand') {
-    //SelfAtendanceAPI('c3RhbmRfNQ==', qrtype, qraction );
+    SelfAtendanceAPI('c3RhbmRfNQ==', qrtype, qraction );
   }
   if(qrtype === 'cycle') {
     
 
     if(qraction === 'issue') {
-      //IssueCycle('MTAwMg==', qrtype, qraction );
+      IssueCycle('MTAwMg==', qrtype, qraction );
     }
     else {
       //DepositCycleAPI('MTAwMg==', qrtype, qraction );
@@ -167,7 +164,7 @@ const QRCodeBox = (props) => {
     //
   }
   if(qrtype === 'user') {
-    //IssueCycleAPI('dXNlcl8x', qrtype, qraction ); //user_1
+    IssueCycleAPI('dXNlcl8x', qrtype, qraction ); //user_1
   }
 
 
@@ -201,64 +198,60 @@ const QRCodeBox = (props) => {
 
   return (
     <>
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>
-        Last Scan:{precScan}
-        {selected}
-      </h2>
-      <select onChange={(e) => setSelected(e.target.value)}>
-        <option value={"environment"}>Back Camera</option>
-        <option value={"user"}>Front Camera</option>
-      </select>
-      {showDialog && (
-        <div className="dialog">
-          <div className="dialog-content">
-            <div className="close">
-              <button
-                onClick={() => {
-                  setCode(null);
-                  setErrorMessage(null);
-                  setDiaglog(false);
-                  setProcessing(false);
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-            {errorMessage && (
-              <div className="errorMessage">
-                <h2>{errorMessage}</h2>
-              </div>
-            )}
-           
-          </div>
-        </div>
-      )}
-      {/* {code && <h2>{code.text}</h2>} */}
-      {!showDialog && !processing && (
-        <QrReader
-          facingMode={selected}
-          delay={500}
-          onError={handleError}
-          onScan={handleScan}
-          // chooseDeviceId={()=>selected}
-          style={{ width: 250, heigth: 250 }}
-        />
-      )}
-    </div>
+    <div  style={{ alignItems: 'center' }}>
+    <h6 className="card-subheader">{heading}</h6>
+    <div className='card1' style={{width:300, height:250, align:'center', margin:'auto'}}>
+
+    
+
+    {isloading ? <div className="loadingQr">
+    <div>Please Wait....</div>
+  </div> :null}
+
+    
+
+    
+      <QrReader
+       constraints={{
+          facingMode: 'environment'
+      }}
+       /* onResult={(result, error) => {
+          if (!!result) {
+            setIsloading(true);
+            setData(result?.text + "=="+qrtype);
+              if(qrtype === 'stand') {
+                SelfAtendanceAPI(result?.text, qrtype, qraction );
+              }
+              else if(qrtype === 'cycle' && qraction==="issue") {
+                IssueCycle(result?.text, qrtype, qraction );
+              }
+              else if(qrtype === 'user' && qraction==="issue" ) {
+                IssueCycleAPI(result?.text, qrtype, qraction );
+              }
+              else if(qrtype === 'cycle' && qraction==="deposit" ) {
+                DepositCycleAPI(result?.text, qrtype, qraction );
+              }
+          }
+
+          if (!!error) {
+            console.info("QR error=====",error);
+            //setData(error);
+          }
+        }}
+        */
+        delay={500}
+        onError={handleError}
+        onScan={handleScan}
+        style={{ width: 300, height:250 }}
+      />
+      </div>
+
+      <i className="tf-icons bx bx-torch"></i>
+      
+
+      <button onClick={toggle}>{on ? 'Disable Torch' : 'Enable Torch'}</button>
+      </div>
+      <p>{data}</p>
       
 
       <ToastContainer/>

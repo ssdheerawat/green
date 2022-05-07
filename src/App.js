@@ -9,6 +9,7 @@ import Support from './Pages/Support';
 import Documentation from './Pages/Documentation';
 import SelfAtendance from './Pages/SelfAtendance';
 import Issue from './Pages/Issue';
+import IssueApi from './Pages/IssueApi';
 import Deposit from './Pages/Deposit';
 import Login from './Pages/Login';
 
@@ -38,6 +39,7 @@ function App() {
                    
                         <Route exact path="self-atendance" element={<SelfAtendance />} />
                         <Route exact path="issue" element={<Issue />} />
+                        <Route exact path="issueapi" element={<IssueApi />} />
                         <Route exact path="deposit" element={<Deposit />} />
                         <Route exact path="green" element={<Login />} />
                         <Route exact path="green/dashboard" element={<Dashboard />} />
