@@ -11,7 +11,10 @@ import SelfAtendance from './Pages/SelfAtendance';
 import Issue from './Pages/Issue';
 import IssueApi from './Pages/IssueApi';
 import Deposit from './Pages/Deposit';
+import Transfer from './Pages/Transfer';
+import Receive from './Pages/Receive';
 import Login from './Pages/Login';
+
 
 function App() {
   return (
@@ -41,6 +44,10 @@ function App() {
                         <Route exact path="issue" element={<Issue />} />
                         <Route exact path="issueapi" element={<IssueApi />} />
                         <Route exact path="deposit" element={<Deposit />} />
+                        <Route exact path="transfer" element={<Transfer />} />
+                        <Route exact path="receive" element={<Receive />} />
+                        
+
                         <Route exact path="green" element={<Login />} />
                         <Route exact path="green/dashboard" element={<Dashboard />} />
                         <Route exact path="dashboard" element={<Dashboard />} />
@@ -69,3 +76,4 @@ function App() {
 //const Profile= () => <h2>You are in the Profile</h2>
 
 export default App;
+

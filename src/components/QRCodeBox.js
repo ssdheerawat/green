@@ -11,6 +11,7 @@ import Cookies from "js-cookie";
 
 
 
+
 const QRCodeBox = (props) => {
 
   let navigate = useNavigate();
@@ -20,6 +21,7 @@ const QRCodeBox = (props) => {
 
   const [on, toggle] = useTorchLight(streamRef.current);
   const [isloading, setIsloading] = useState(false);
+  const [TransferList, setTransferList] = useState([]);
 
 
 
@@ -170,6 +172,36 @@ const QRCodeBox = (props) => {
       }
   };
 
+  const TransferCycleAPI = async (qrCode, qrtype, qraction) => {
+
+
+
+    const response = await api({
+      url: 'staff/transfer',
+      methode: "POST",
+      data: {"cycle_id": qrCode,
+      "latitude":"4234","longitude":"34234324"},
+    });
+
+    console.log("response===", response);
+
+    if (response.status) {
+
+     
+        let TransferListArr = TransferList;
+        TransferListArr.push(response.data.cycle_no);
+        setTransferList(TransferListArr);
+        console.log("TransferList==",TransferList);
+        //cycle_no
+
+        toast.success(response.message);
+        //navigate("/dashboard", { replace: true });
+    }else {
+
+        toast.error(response.message);
+      }
+  };
+
   
 
 
@@ -182,8 +214,11 @@ const QRCodeBox = (props) => {
     if(qraction === 'issue') {
       //IssueCycle('MTAwMg==', qrtype, qraction );
     }
-    else {
+    else if(qraction === 'deposit') {
       //DepositCycleAPI('MTAwMg==', qrtype, qraction );
+    }
+    else if(qraction === 'transfer') {
+      //TransferCycleAPI('MTAwMg==', qrtype, qraction );
     }
     
     //
@@ -247,7 +282,7 @@ const QRCodeBox = (props) => {
             }
             else {
               setIsloading(true);
-              setData(result?.text + "=="+qrtype);
+              setData(result?.text);
                 if(qrtype === 'stand') {
                   SelfAtendanceAPI(result?.text, qrtype, qraction );
                 }
@@ -259,6 +294,9 @@ const QRCodeBox = (props) => {
                 }
                 else if(qrtype === 'cycle' && qraction==="deposit" ) {
                   DepositCycleAPI(result?.text, qrtype, qraction );
+                }
+                else if(qrtype === 'cycle' && qraction === 'transfer') {
+                  TransferCycleAPI(result?.text,  qrtype, qraction );
                 }
             }
           }
@@ -282,7 +320,33 @@ const QRCodeBox = (props) => {
       <button onClick={toggle}>{on ? 'Disable Torch' : 'Enable Torch'}</button>
       </div>
       <p>{data}</p>
+
+
+      {qraction === 'transfer' && TransferList && TransferList.length > 0 ? 
+
+<table className="table table-bordered">  
+<tr>  
+    <th>S.No</th>  
+    <th>Cycle No</th>  
+    <th>Action</th>  
+</tr>  
+
+{TransferList.map((TransferList1, index) => (  
+  <tr data-index={index}>  
+    <td>{index+1}</td>  
+    <td>{TransferList1}</td>  
+    <td>
+    
       
+     </td>   
+  </tr>  
+))}  
+
+</table>  
+      
+      :<h2>aaaaaaaaaaaaa</h2>}
+      
+
 
       <ToastContainer/>
 
