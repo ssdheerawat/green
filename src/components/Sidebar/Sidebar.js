@@ -24,9 +24,7 @@ import { Nav } from "react-bootstrap";
 
 function Sidebar({ color, image, routes }) {
   const location = useLocation();
-  const activeRoute = (routeName) => {
-    return location.pathname.indexOf(routeName) > -1 ? "active" : "";
-  };
+  
   return (
     <div className="sidebar" data-image={image} data-color={color}>
       <div
@@ -52,11 +50,7 @@ function Sidebar({ color, image, routes }) {
             if (!prop.redirect)
               return (
                 <li
-                  className={
-                    prop.upgrade
-                      ? "active active-pro"
-                      : activeRoute(prop.layout + prop.path)
-                  }
+                  
                   key={key}
                 >
                   <NavLink

@@ -8,6 +8,9 @@ import Dashboard from './Pages/Dashboard';
 import Support from './Pages/Support';
 import Documentation from './Pages/Documentation';
 import SelfAtendance from './Pages/SelfAtendance';
+import Issue from './Pages/Issue';
+import Deposit from './Pages/Deposit';
+import Login from './Pages/Login';
 
 function App() {
   return (
@@ -31,10 +34,12 @@ function App() {
              
                     <Routes>
                       
-                        <Route exact path="/" element={<Dashboard />} />
+                        <Route exact path="/" element={<Login />} />
                    
                         <Route exact path="self-atendance" element={<SelfAtendance />} />
-                        <Route exact path="green" element={<Dashboard />} />
+                        <Route exact path="issue" element={<Issue />} />
+                        <Route exact path="deposit" element={<Deposit />} />
+                        <Route exact path="green" element={<Login />} />
                         <Route exact path="green/dashboard" element={<Dashboard />} />
                         <Route exact path="dashboard" element={<Dashboard />} />
                         <Route exact path="support" element={<Support />} />
