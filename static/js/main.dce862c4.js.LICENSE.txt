@@ -1,3 +1,14 @@
+/*! Moment Duration Format v2.2.2
+     *  https://github.com/jsmreese/moment-duration-format
+     *  Date: 2018-02-16
+     *
+     *  Duration format plugin function for the Moment.js library
+     *  http://momentjs.com/
+     *
+     *  Copyright 2018 John Madhavan-Reese
+     *  Released under the MIT license
+     */
+
 /*! js-cookie v3.0.1 | MIT */
 
 /**
@@ -61,3 +72,5 @@
  *
  * @license MIT
  */
+
+//! moment.js
