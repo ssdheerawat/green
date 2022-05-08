@@ -261,7 +261,7 @@ const QRCodeBox = (props) => {
 
   if(qrtype === 'stand') {
     //SelfAtendanceAPI('c3RhbmRfNQ==', qrtype, qraction );
-    //StandOpenAPI('c3RhbmRfNQ==', qrtype, qraction );
+    StandOpenAPI('c3RhbmRfNQ==', qrtype, qraction );
   }
   if(qrtype === 'cycle') {
     
