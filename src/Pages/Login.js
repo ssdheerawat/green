@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
+import logo from '../logo.png';
 
 
 const Login = (props) => {
@@ -98,15 +99,21 @@ const Login = (props) => {
       
               <div className="app-brand justify-content-center">
                
-                  <span className="app-brand-logo demo">
+              
+                  <div className="card mb-3">
+                    <img className="card-img-top" src={logo} alt="Card cap" />
 
-                  </span>
-                  <span className="app-brand-text demo text-body fw-bolder">GreenRide</span>
+                      </div>
+
+                 
+
+          
+                 
                
               </div>
           
-              <h4 className="mb-2">Welcome to GreenRide! 👋</h4>
-              <p className="mb-4">Please sign-in to your account and start the adventure</p>
+              <h4 className="mb-2 text-center">Welcome to GreenRide! 👋</h4>
+              <p className="mb-4 text-center">Please sign-in to your account and start the adventure</p>
 
               <form id="formAuthentication" className="mb-3" onSubmit={handleSubmit} method="POST">
                 <div className="mb-3 text-left" >

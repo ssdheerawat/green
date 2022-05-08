@@ -1,5 +1,6 @@
 import React from "react";
 //import {BASE_URL} from '../constants';
+import logo from '../logo.png';
 
 
 class Header extends React.Component {
@@ -15,9 +16,10 @@ class Header extends React.Component {
             
 
             <div className="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-            
+            <img src={logo} alt="Logo" style={{    width: 50, height: 50, borderRadius:25, marginRight:15}} />
         
               <div className="navbar-nav align-items-center nav-title">
+              
                   GreenRide
               </div>
          
