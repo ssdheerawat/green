@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { api } from "../api";
 
 import Cookies from "js-cookie";
@@ -14,93 +14,18 @@ const Login = (props) => {
     useEffect(() => {
         let token = Cookies.get("token");
         if (token) {
-            navigate("/dashboard", { replace: true });
+            //navigate("/dashboard", { replace: true });
         }
-      }, []);
+      }, [navigate]);
 
 
     // React States
-  const [errorMessages, setErrorMessages] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  //const [errorMessages, setErrorMessages] = useState({});
+  //const [isSubmitted, setIsSubmitted] = useState(false);
 
   // User Login info
-  const database = [
-    {
-      username: "user1",
-      password: "pass1"
-    },
-    {
-      username: "user2",
-      password: "pass2"
-    }
-  ];
-
-  const errors = {
-    uname: "invalid username",
-    pass: "invalid password"
-  };
 
 
-
- 
- /* const handleSubmit11 = async (e) => {
-    e.preventDefault();
-    const error = await handleValidate();
-    setCheck(true);
-    setIsLoading(true);
-    if (!error.username.length && !error.password.length) {
-      //setIsLoading(true);
-      const response = await api({
-        url: "users/login",
-        method: "POST",
-        data: loginData,
-      });
-
-      if (response.status) {
-        setIsLoading(false);
-
-        Cookies.set("user_id", response.data.id);
-
-        Cookies.set(
-          "token",
-          response.data.token,
-          remember ? { expires: 7 } : ""
-        );
-        if (remember) {
-          Cookies.set(
-            "detail",
-            encryptCodes(
-              JSON.stringify({
-                userName: loginData.username,
-                userpassword: loginData.password,
-              })
-            )
-          );
-          Cookies.set("remember", remember);
-        } else {
-          Cookies.remove("detail");
-          Cookies.remove("remember");
-        }
-
-        if (response.data.is_password_updated == 0) {
-          setOldUser(true);
-        } else {
-          toast.success(response.message);
-          router.push("/vendor_account");
-        }
-        //setBusinessFormData();
-      } else {
-        // setisLoading(flase);
-        toast.error(response.message);
-        // alert("Something went wrong");
-      }
-    } else {
-      setIsLoading(false);
-    }
-    setIsLoading(false);
-  };
-
-  */
 
 
   const handleSubmit = async (event) => {
@@ -126,13 +51,18 @@ const Login = (props) => {
 
         Cookies.set("user_id", response.data.id);
 
-        Cookies.set(
-          "token",
-          response.data.token
-        );
+          Cookies.set(
+            "userDetail",
+            JSON.stringify(response.data)
+          );
+
+          Cookies.set(
+            "token",
+            response.data.token
+          );
       
-          Cookies.remove("detail");
-          Cookies.remove("remember");
+          //Cookies.remove("detail");
+          //Cookies.remove("remember");
         
 
           console.log("response.message",response.message);
@@ -143,54 +73,89 @@ const Login = (props) => {
       } else {
         // setisLoading(flase);
         toast.error(response.message);
-        // alert("Something went wrong");
+        //alert("Something went wrong");
       }
 
 
     // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
+    //const userData = database.find((user) => user.username === uname.value);
 
-    // Compare user info
-   // if (userData) {
-     // if (userData.password !== pass.value) {
-        // Invalid password
-       // setErrorMessages({ name: "pass", message: errors.pass });
-     // } else {
-        setIsSubmitted(true);
-     // }
-    //} else {
-      // Username not found
-      //setErrorMessages({ name: "uname", message: errors.uname });
-    //}
+
   };
 
   // Generate JSX code for error message
-  const renderErrorMessage = (name) =>
-    name === errorMessages.name && (
-      <div className="error">{errorMessages.message}</div>
-    );
+
 
 
   return (
     <>
-    <div className="form">
-      <form onSubmit={handleSubmit}>
-        <div className="input-container">
-          <label>Username </label>
-          <input type="text" name="uname" required />
-          {renderErrorMessage("uname")}
+    <div className="container-xxl">
+      <div className="authentication-wrapper authentication-basic container-p-y">
+        <div className="authentication-inner">
+    
+          <div className="card">
+            <div className="card-body">
+      
+              <div className="app-brand justify-content-center">
+               
+                  <span className="app-brand-logo demo">
+
+                  </span>
+                  <span className="app-brand-text demo text-body fw-bolder">GreenRide</span>
+               
+              </div>
+          
+              <h4 className="mb-2">Welcome to GreenRide! 👋</h4>
+              <p className="mb-4">Please sign-in to your account and start the adventure</p>
+
+              <form id="formAuthentication" className="mb-3" onSubmit={handleSubmit} method="POST">
+                <div className="mb-3 text-left" >
+                  <label className="form-label">Mobile No</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="uname"
+                    name="uname"
+                    placeholder="Enter your Mobile No"
+                    required
+                  />
+              
+                </div>
+                <div className="mb-3 form-password-toggle">
+                  <div className="d-flex justify-content-between">
+                    <label className="form-label" >Password</label>
+                   
+                      <small>Forgot Password?</small>
+                    
+                  </div>
+                  <div className="input-group input-group-merge">
+                    <input
+                      type="password"
+                      id="password"
+                      className="form-control"
+                      name="pass"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"
+                    />
+                  
+                    <span className="input-group-text cursor-pointer"><i className="bx bx-hide"></i></span>
+                  </div>
+                </div>
+               
+                <div className="mb-3">
+                  <button className="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                </div>
+              </form>
+
+         
+            </div>
+          </div>
+   
         </div>
-        <div className="input-container">
-          <label>Password </label>
-          <input type="password" name="pass" required />
-          {renderErrorMessage("pass")}
-        </div>
-        <div className="button-container">
-          <input type="submit" />
-        </div>
-      </form>
-      <ToastContainer />
+      </div>
     </div>
+    <ToastContainer/>
+    
     </>
   );
 };

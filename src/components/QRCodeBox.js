@@ -81,6 +81,39 @@ const QRCodeBox = (props) => {
       }
   };
 
+  const StandOpenAPI = async (qrCode, qrtype, qraction) => {
+
+
+
+    const response = await api({
+      url: 'staff/stand-inout',
+      methode: "POST",
+      data: {"stand_id": qrCode},
+    });
+
+    console.log("response===", response);
+    
+
+    if (response.status) {
+
+        if(response.data.action === 'out'){
+            Cookies.set( "standOpen",  "no" );
+        }
+        else {
+          Cookies.set( "standOpen",  "yes" );
+        }
+        Cookies.set(
+          "successMsg",
+          response.message
+        );
+        toast.success(response.message);
+        navigate("/dashboard", { replace: true });
+    }else {
+        setIsQRloading(false);
+        toast.error(response.message);
+      }
+  };
+
   const IssueCycle = async (qrCode, qrtype, qraction) => {
 
     console.log("Get Cycle QR ");
@@ -227,6 +260,7 @@ const QRCodeBox = (props) => {
 
   if(qrtype === 'stand') {
     //SelfAtendanceAPI('c3RhbmRfNQ==', qrtype, qraction );
+    //StandOpenAPI('c3RhbmRfNQ==', qrtype, qraction );
   }
   if(qrtype === 'cycle') {
     
@@ -241,7 +275,7 @@ const QRCodeBox = (props) => {
       //TransferCycleAPI('MTAwMg==', qrtype, qraction );
     }
     else if(qraction === 'receive') {
-      ReceiveCycleAPI('MTAwMg==', qrtype, qraction );
+      //ReceiveCycleAPI('MTAwMg==', qrtype, qraction );
     }
     
     //
@@ -303,9 +337,12 @@ onResult={(result, error) => {
      else {
       setIsQRloading(true);
        setData(result?.text);
-         if(qrtype === 'stand') {
+         if(qrtype === 'stand' && qraction==="open") {
            SelfAtendanceAPI(result?.text, qrtype, qraction );
          }
+         else if(qrtype === 'stand' && qraction==="inout" ) {
+          StandOpenAPI(result?.text, qrtype, qraction );
+          }
          else if(qrtype === 'cycle' && qraction==="issue") {
            IssueCycle(result?.text, qrtype, qraction );
          }
@@ -318,6 +355,9 @@ onResult={(result, error) => {
          else if(qrtype === 'cycle' && qraction === 'transfer') {
            TransferCycleAPI(result?.text,  qrtype, qraction );
          }
+         else if(qrtype === 'cycle' && qraction === 'receive') {
+          ReceiveCycleAPI(result?.text,  qrtype, qraction );
+        }
      }
    }
 

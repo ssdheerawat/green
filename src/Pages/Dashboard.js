@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from "js-cookie";
+import { api } from "../api";
 
 
 function Dashboard() {
@@ -15,9 +16,44 @@ function Dashboard() {
   
 
   const [IsloginStand, setIsloginStand] = useState(false);
+  const [IsStandOpen, setIsIsStandOpen] = useState(false);
+  const [DashboardData, setDashboardData] = useState([]);
 
+  const getDashboardData = async (qrCode, qrtype, qraction) => {
+
+    const response = await api({
+      url: 'staff/dashboarddata',
+      methode: "POST",
+      data: {"stand_id": "qrCode"},
+    });
+
+    console.log("response===", response);
+    
+
+    if (response.status) {
+		//dfdsfd
+
+		setDashboardData(response.data);
+		//console.log("DashboardData",DashboardData);
+        
+        
+    }else {
+        //setIsQRloading(false);
+        toast.error(response.message);
+      }
+  };
+  //standOpen
   useEffect(() => {
+
+	let userDetailStr = Cookies.get("userDetail");
+	let userDetail = JSON.parse(userDetailStr);
+
+
+	console.log(userDetail);
+
+
 	let loginStand = Cookies.get("loginStand");
+	let standOpen = Cookies.get("standOpen");
 	let successMsg = Cookies.get("successMsg");
 
 	if(successMsg !== "") {
@@ -32,6 +68,12 @@ function Dashboard() {
 	if(loginStand && loginStand !== "") {
 		setIsloginStand(true);
 	  }
+
+	  if(standOpen && standOpen === "yes") {
+		setIsIsStandOpen(true);
+	  }
+
+	  getDashboardData();
   }, []);
 
   
@@ -39,11 +81,22 @@ function Dashboard() {
   return (
     <div>
 
+		{ IsloginStand ? 
+		<div class="card darkcard" >
+		<div class="card-header">
+		<h3 class="card-title form-title"><i className="tf-icons bx bx-cycling"></i> {DashboardData.standName}</h3>
+		</div>
+		</div>
+		:
+		null
+		}	
+               
+
       <table className="table dash-link-tbl table-bordered ">
 			<tbody><tr>
 				<td className="disabledClick">
 { 
-IsloginStand
+IsloginStand  && IsStandOpen
 ?  <Link to="/issue" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-cycling"></i></div><div className="card-title">Issue</div></Link>
 : <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-cycling"></i></div><div className="card-title">Issue</div></Link>
 }
@@ -51,14 +104,24 @@ IsloginStand
 				</td>
 				<td className="disabledClick">
 				{ 
-				IsloginStand
+				IsloginStand  && IsStandOpen
 				?  <Link to="/deposit" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-briefcase"></i></div><div className="card-title">Deposit</div></Link>
 				: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-briefcase"></i></div><div className="card-title">Deposit</div></Link>
 				}
 
+
+
 				</td>
 				<td className="disabledClick">
-						<Link to="/onroad" className="dash-link">
+<Link   to={
+       {     
+         pathname: '/onroad',
+         status:1
+        }
+  }
+  className="dash-link"
+  > 
+						
 								<div className="card-icon">
 									<i className="tf-icons bx bx-trending-up"></i>
 								</div>
@@ -69,29 +132,41 @@ IsloginStand
 			</tr>
 			<tr>
 			<td className="disabledClick">
-						<Link to="/transfer" className="dash-link">
-								<div className="card-icon">
-									<i className="tf-icons bx bx-transfer"></i>
-								</div>
-								<div className="card-title">Transfer</div>
-						</Link>
+			{ 
+			IsloginStand
+			?  <Link to="/transfer" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-transfer"></i></div><div className="card-title">Transfer</div></Link>
+			: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-transfer"></i></div><div className="card-title">Transfer</div></Link>
+			}
+
 				</td>
 				<td className="disabledClick">
-						<Link to="/receive" className="dash-link">
-								<div className="card-icon">
-									<i className="tf-icons bx bx-download"></i>
-								</div>
-								<div className="card-title">Receive</div>
-						</Link>
-				</td>
-				<td className="disabledClick">
+
+					{ 
+					IsloginStand
+					?  <Link to="/receive" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-download"></i></div><div className="card-title">Receive</div></Link>
+					: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-download"></i></div><div className="card-title">Receive</div></Link>
+					}
 					
-						<Link to="/open-stand" className="dash-link">
-								<div className="card-icon">
-									<i className="tf-icons bx bx-lock-open"></i>
-								</div>
-								<div className="card-title">Open Stand 3</div>
-						</Link>
+				</td>
+				<td className="disabledClick">
+
+{ 
+IsStandOpen && IsloginStand
+?  <Link to="/stand-inout" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-lock-open"></i></div><div className="card-title">Close Stand</div></Link>
+: null
+}
+{ 
+!IsStandOpen && IsloginStand
+?  <Link to="/stand-inout" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-lock-open"></i></div><div className="card-title">Open Stand</div></Link>
+: null
+}
+{ 
+!IsloginStand
+?  <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() }><div className="card-icon"><i className="tf-icons bx bx-lock-open"></i></div><div className="card-title">Open Stand</div></Link>
+: null
+}
+					
+						
 				</td>
 			
 			</tr>
@@ -124,6 +199,40 @@ IsloginStand
 			</tr>
 			
 			</tbody></table>
+
+
+			{ IsloginStand ? 
+			<div className="d-flex flex-wrap dashcard" id="icons-container">
+                <div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2">
+                  <div className="card-body">
+                    <i className="bx bxl-adobe mb-2"></i>
+                    <p className="icon-name text-capitalize text-truncate mb-0">Total Cycle</p>
+                    <p className="icon-name text-capitalize text-truncate mb-0">{DashboardData.totalCycle}</p>
+                  </div>
+                </div>
+                <div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2">
+                  <div className="card-body">
+                    <i className="bx bxl-algolia mb-2"></i>
+                    <p className="icon-name text-capitalize text-truncate mb-0">On Road</p>
+                    <p className="icon-name text-capitalize text-truncate mb-0">{DashboardData.totalOnroad}</p>
+                  </div>
+                </div>
+                <div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2">
+                  <div className="card-body">
+                    <i className="bx bxl-audible mb-2"></i>
+                    <p className="icon-name text-capitalize text-truncate mb-0">Stock</p>
+                    <p className="icon-name text-capitalize text-truncate mb-0">{DashboardData.totalStock}</p>
+                  </div>
+                </div>
+				</div>
+				:
+				null
+				}
+
+
+
+
+
 			<ToastContainer/>
     </div>
   );

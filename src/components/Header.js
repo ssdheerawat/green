@@ -1,4 +1,5 @@
 import React from "react";
+//import {BASE_URL} from '../constants';
 
 
 class Header extends React.Component {
@@ -9,20 +10,15 @@ class Header extends React.Component {
             className="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
             id="layout-navbar"
           >
-             
-            <div className="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-                
-                <i className="bx bx-menu bx-sm"></i>
-              
-            </div>
             
+
             
 
             <div className="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
             
         
-              <div className="navbar-nav align-items-center">
-              GreenRide
+              <div className="navbar-nav align-items-center nav-title">
+                  GreenRide
               </div>
          
 
