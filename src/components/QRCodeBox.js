@@ -60,7 +60,7 @@ const QRCodeBox = (props) => {
         else {
             Cookies.set(
                 "loginStand",
-                response.data.stand_id
+                response.data.title
               );
         }
 

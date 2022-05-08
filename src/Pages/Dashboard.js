@@ -33,6 +33,15 @@ function Dashboard() {
     if (response.status) {
 		//dfdsfd
 
+		if(response.data.standStatus === 1){
+            Cookies.set( "standOpen",  "yes" );
+			setIsIsStandOpen(true);
+        }
+        else {
+          Cookies.set( "standOpen",  "no" );
+		  setIsIsStandOpen(false);
+        }
+
 		setDashboardData(response.data);
 		//console.log("DashboardData",DashboardData);
         
@@ -42,6 +51,8 @@ function Dashboard() {
         toast.error(response.message);
       }
   };
+
+  const loginStand = Cookies.get("loginStand");
   //standOpen
   useEffect(() => {
 
@@ -52,7 +63,7 @@ function Dashboard() {
 	console.log(userDetail);
 
 
-	let loginStand = Cookies.get("loginStand");
+	
 	let standOpen = Cookies.get("standOpen");
 	let successMsg = Cookies.get("successMsg");
 
@@ -74,7 +85,7 @@ function Dashboard() {
 	  }
 
 	  getDashboardData();
-  }, []);
+  }, [loginStand]);
 
   
 //loginStand
@@ -82,9 +93,9 @@ function Dashboard() {
     <div>
 
 		{ IsloginStand ? 
-		<div class="card darkcard" >
-		<div class="card-header">
-		<h3 class="card-title form-title"><i className="tf-icons bx bx-cycling"></i> {DashboardData.standName}</h3>
+		<div className="card darkcard" >
+		<div className="card-header">
+		<h3 className="card-title form-title"><i className="tf-icons bx bx-cycling"></i> {loginStand}</h3>
 		</div>
 		</div>
 		:
@@ -115,7 +126,7 @@ IsloginStand  && IsStandOpen
 				<td className="disabledClick">
 <Link   to={
        {     
-         pathname: '/onroad',
+         pathname: '/green/onroad',
          status:1
         }
   }

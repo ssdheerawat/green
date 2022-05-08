@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from "react";
-
+import Moment from 'react-moment';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api } from "../api";
 
 
-function CyclesList(props) {
+function TransactionList(props) {
 
     console.log("props",props);
 	
@@ -15,12 +15,12 @@ function CyclesList(props) {
   
 
 
-  const [getCyclesList, setCyclesList] = useState([]);
+  const [Transactions, setTransactions] = useState([]);
 
   const getCycleListData = async () => {
 
     const response = await api({
-      url: 'staff/cycles',
+      url: 'staff/rides',
       methode: "POST",
       data: {"status": "1"},
     });
@@ -31,7 +31,7 @@ function CyclesList(props) {
     if (response.status) {
 		//dfdsfd
 
-		setCyclesList(response.data);
+		setTransactions(response.data);
 		//console.log("DashboardData",DashboardData);
         
         
@@ -59,28 +59,28 @@ function CyclesList(props) {
                               <tr>
                                 <th>S.No</th>
                                 <th>Cycle No.</th>
+                                <th>Customer</th>
                                 <th>Stand</th>
-                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Fare</th>
+                                
                               </tr>
                               </thead>
                               <tbody className="table-border-bottom-0">
                               {
-                                getCyclesList.map((item, index) => {
+                                Transactions.map((item, index) => {
                                   return (
                              
                                       <tr key={index}>
                                         <td> {index+1} </td>
-                                        <td> {item.cycle_no} </td>
-                                        <td> {item?.stand?.title} </td>
-                                        <td> 
-                                            {item.status === 2 ? 
-                                            <span className="badge bg-label-warning me-1">On Road</span>
-                                            :
-                                            <span className="badge bg-label-success me-1">In Stock</span>
-                                            
-                                        } 
-                                            
-                                            </td>
+                                        <td> {item.cycle_id} </td>
+                                        <td> {item?.user?.fullname} </td>
+                                        <td> {item?.stand_from_data?.title} </td>
+                                        <td> <Moment date={item.DateFrom} format="DD/MM/YYYY hh:mm A" /></td>
+                                        <td> {item.TotalMinute} M</td>
+                                        <td> Rs. {item.FareDeducted} </td>
+                                        
                                       </tr>
                              
                                   )
@@ -108,4 +108,4 @@ function CyclesList(props) {
   );
 }
 
-export default CyclesList;
+export default TransactionList;

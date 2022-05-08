@@ -15,6 +15,8 @@ import Receive from './Pages/Receive';
 import StandInOut from './Pages/StandInOut';
 import AppLinkShare from './Pages/AppLinkShare';
 import CyclesList from './Pages/CyclesList';
+import TransactionList from './Pages/TransactionList';
+
 import Login from './Pages/Login';
 
 
@@ -51,6 +53,7 @@ function App() {
                         <Route exact path="green/stand-inout" element={<StandInOut />} />
                         <Route exact path="green/app-link" element={<AppLinkShare />} />
                         <Route exact path="green/onroad" element={<CyclesList />} />
+                        <Route exact path="green/transaction" element={<TransactionList />} />
                         
 
                         <Route exact path="green" element={<Login />} />
