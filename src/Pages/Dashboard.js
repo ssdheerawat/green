@@ -42,6 +42,10 @@ function Dashboard() {
 		  setIsIsStandOpen(false);
         }
 
+		Cookies.set( "loginStand",  response.data.loginStand );
+
+		
+
 		setDashboardData(response.data);
 		//console.log("DashboardData",DashboardData);
         

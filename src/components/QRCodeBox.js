@@ -75,8 +75,9 @@ const QRCodeBox = (props) => {
         toast.success(response.message);
         navigate("/green/dashboard", { replace: true });
     }else {
-  
+        
         toast.error(response.message);
+        setIsQRloading(false);
         // alert("Something went wrong");
       }
   };
@@ -196,7 +197,7 @@ const QRCodeBox = (props) => {
         toast.success(response.message);
         navigate("/green/dashboard", { replace: true });
     }else {
-
+        setIsQRloading(false);
         toast.error(response.message);
       }
   };
@@ -227,7 +228,7 @@ const QRCodeBox = (props) => {
         toast.success(response.message);
 
     }else {
-
+        
         toast.error(response.message);
       }
   };
