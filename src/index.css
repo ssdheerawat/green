@@ -71,9 +71,9 @@ code {
   padding: 30px;
 }
 
-.card1{padding: 0px; margin: 0px; background-color: aqua;}
-.card1 section{padding: 0px; margin: 0px;height: 250px !important; background-color: red;}
-.card1 video{padding: 0px; margin: 0px;height: 250px !important; background-color: yellow;}
+.card1{padding: 0px; margin: 0px; }
+.card1 section{padding: 0px; margin: 0px;height: 250px !important; }
+.card1 video{padding: 0px; margin: 0px;height: 250px !important;width: 300px !important;}
 .text-left{text-align: left;}
 
 .nav-title{font-weight: bold;

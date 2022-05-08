@@ -6,7 +6,7 @@ const Transfer = (props) => {
 
   return (
     <>
-    <div  style={{ alignItems: 'center' }}>
+    <div  style={{ alignItems: 'center', textAlign:'center' }}>
     <h5 className="card-header">Transfer Cycle</h5>
 
 

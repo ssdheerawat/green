@@ -14,7 +14,7 @@ const Login = (props) => {
     useEffect(() => {
         let token = Cookies.get("token");
         if (token) {
-            //navigate("/dashboard", { replace: true });
+            navigate("/green/dashboard", { replace: true });
         }
       }, [navigate]);
 
@@ -67,7 +67,7 @@ const Login = (props) => {
 
           console.log("response.message",response.message);
           toast.success(response.message);
-          navigate("/dashboard", { replace: true });
+          navigate("/green/dashboard", { replace: true });
         
         //setBusinessFormData();
       } else {

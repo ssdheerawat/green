@@ -6,7 +6,7 @@ const Deposit = (props) => {
 
   return (
     <>
-    <div  style={{ alignItems: 'center' }}>
+    <div  style={{ alignItems: 'center', textAlign:'center' }}>
     <h5 className="card-header">Deposit Cycle</h5>
 
 

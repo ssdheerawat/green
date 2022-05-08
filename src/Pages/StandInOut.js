@@ -6,7 +6,7 @@ const StandInOut = (props) => {
 
   return (
     <>
-    <div  style={{ alignItems: 'center' }}>
+    <div  style={{ alignItems: 'center', textAlign:'center' }}>
     <h5 className="card-header">Stand Open</h5>
 
 

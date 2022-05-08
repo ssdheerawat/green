@@ -6,7 +6,7 @@ const SelfAtendance = (props) => {
 
   return (
     <>
-    <div  style={{ alignItems: 'center' }}>
+    <div  style={{ alignItems: 'center', textAlign:'center' }}>
     <h5 className="card-header">Staff Attendance</h5>
 
 

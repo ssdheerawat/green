@@ -73,7 +73,7 @@ const QRCodeBox = (props) => {
 
             
         toast.success(response.message);
-        navigate("/dashboard", { replace: true });
+        navigate("/green/dashboard", { replace: true });
     }else {
   
         toast.error(response.message);
@@ -107,7 +107,7 @@ const QRCodeBox = (props) => {
           response.message
         );
         toast.success(response.message);
-        navigate("/dashboard", { replace: true });
+        navigate("/green/dashboard", { replace: true });
     }else {
         setIsQRloading(false);
         toast.error(response.message);
@@ -125,7 +125,7 @@ const QRCodeBox = (props) => {
 
 
 
-    navigate("/issueapi", { replace: true });
+    navigate("/green/issueapi", { replace: true });
 
 
 
@@ -157,7 +157,7 @@ const QRCodeBox = (props) => {
         );
 
         toast.success(response.message);
-        navigate("/dashboard", { replace: true });
+        navigate("/green/dashboard", { replace: true });
     }else {
 
 
@@ -170,7 +170,7 @@ const QRCodeBox = (props) => {
         toast.error(response.message);
 
         // alert("Something went wrong");
-        navigate("/issue", { replace: true });
+        navigate("/green/issue", { replace: true });
       }
   };
 
@@ -194,7 +194,7 @@ const QRCodeBox = (props) => {
       
 
         toast.success(response.message);
-        navigate("/dashboard", { replace: true });
+        navigate("/green/dashboard", { replace: true });
     }else {
 
         toast.error(response.message);
@@ -225,7 +225,7 @@ const QRCodeBox = (props) => {
         //cycle_no
 
         toast.success(response.message);
-        //navigate("/dashboard", { replace: true });
+
     }else {
 
         toast.error(response.message);
@@ -248,7 +248,7 @@ const QRCodeBox = (props) => {
     if (response.status) {
 
         toast.success(response.message);
-        //navigate("/dashboard", { replace: true });
+
     }else {
 
         toast.error(response.message);
@@ -315,7 +315,7 @@ const QRCodeBox = (props) => {
 
   return (
     <>
-    <div  style={{ alignItems: 'center' }}>
+    <div  style={{ alignItems: 'center', textAlign:'center' }}>
     <h6 className="card-subheader">{heading}</h6>
     <div className='card1' style={{width:300, height:250, align:'center', margin:'auto'}}>
 

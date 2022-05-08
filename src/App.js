@@ -40,22 +40,22 @@ function App() {
              
                     <Routes>
                       
-                        <Route exact path="/" element={<Login />} />
+                      
                    
-                        <Route exact path="self-atendance" element={<SelfAtendance />} />
-                        <Route exact path="issue" element={<Issue />} />
-                        <Route exact path="issueapi" element={<IssueApi />} />
-                        <Route exact path="deposit" element={<Deposit />} />
-                        <Route exact path="transfer" element={<Transfer />} />
-                        <Route exact path="receive" element={<Receive />} />
-                        <Route exact path="stand-inout" element={<StandInOut />} />
-                        <Route exact path="app-link" element={<AppLinkShare />} />
-                        <Route exact path="onroad" element={<CyclesList />} />
+                        <Route exact path="green/self-atendance" element={<SelfAtendance />} />
+                        <Route exact path="green/issue" element={<Issue />} />
+                        <Route exact path="green/issueapi" element={<IssueApi />} />
+                        <Route exact path="green/deposit" element={<Deposit />} />
+                        <Route exact path="green/transfer" element={<Transfer />} />
+                        <Route exact path="green/receive" element={<Receive />} />
+                        <Route exact path="green/stand-inout" element={<StandInOut />} />
+                        <Route exact path="green/app-link" element={<AppLinkShare />} />
+                        <Route exact path="green/onroad" element={<CyclesList />} />
                         
 
                         <Route exact path="green" element={<Login />} />
-                        <Route exact path="green/dashboard" element={<Dashboard />} />
-                        <Route exact path="dashboard" element={<Dashboard />} />
+                        <Route exact path="/green/dashboard" element={<Dashboard />} />
+                   
                         
                         <Route
                           path="*"
