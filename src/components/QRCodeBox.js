@@ -256,6 +256,39 @@ const QRCodeBox = (props) => {
       }
   };
 
+  const TransferAll = async () => {
+
+
+
+    const response = await api({
+      url: 'staff/transferall',
+      methode: "POST",
+      data: {"TransferList": TransferList},
+    });
+
+    console.log("response===", response);
+    setIsQRloading(false);
+
+    if (response.status) {
+
+      Cookies.set(
+        "successMsg",
+        response.message
+      );
+      
+
+        toast.success(response.message);
+        navigate("/green/dashboard", { replace: true });
+
+    }else {
+
+        toast.error(response.message);
+      }
+  };
+
+
+  
+
   
 
 
@@ -273,10 +306,12 @@ const QRCodeBox = (props) => {
       //DepositCycleAPI('MTAwMg==', qrtype, qraction );
     }
     else if(qraction === 'transfer') {
-      //TransferCycleAPI('MTAwMg==', qrtype, qraction );
+       //TransferCycleAPI('MTAwMg==', qrtype, qraction );
     }
     else if(qraction === 'receive') {
       //ReceiveCycleAPI('MTAwMg==', qrtype, qraction );
+      ReceiveCycleAPI('MzEwNg==', qrtype, qraction );  //3106
+      // MzEwNg==
     }
     
     //
@@ -391,7 +426,7 @@ onResult={(result, error) => {
 
 
       {qraction === 'transfer' && TransferList && TransferList.length > 0 ? 
-
+<div>
 <table className="table table-bordered">  
 <tr>  
     <th>S.No</th>  
@@ -408,7 +443,8 @@ onResult={(result, error) => {
 ))}  
 
 </table>  
-      
+<button onClick={TransferAll} className="btn btn-primary">Transfer All</button>
+</div> 
       :null}
       
 
