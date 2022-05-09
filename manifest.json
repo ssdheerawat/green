@@ -1,7 +1,7 @@
 {
   "name": "GreenRide Staff",
   "short_name": "GreenRide",
-  "description": "This  is test app",
+  "description": "GreenRide Staff app for issue deposit cycles",
   "icons": [
     {
       "src": "icon-192x192.png",
@@ -27,7 +27,7 @@
 
   "start_url": "https://ssdheerawat.github.io/green/",
   "display": "standalone",
-  "theme_color": "#50e3c2",
-  "background_color": "#50e3c2"
+  "theme_color": "#128C7E",
+  "background_color": "#128C7E"
  
 }
