@@ -50,7 +50,7 @@ const Login = (props) => {
       if (response.status) {
         //setIsLoading(false);
 
-        Cookies.set("user_id", response.data.id);
+          Cookies.set("user_id", response.data.id);
 
           Cookies.set(
             "userDetail",

@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from "js-cookie";
 import { api } from "../api";
+import { useNavigate } from "react-router-dom";
 
 
 function Dashboard() {
@@ -58,10 +59,34 @@ function Dashboard() {
 
   const loginStand = Cookies.get("loginStand");
   //standOpen
+
+  let navigate = useNavigate();
+
+  let token = Cookies.get("token");
+console.log("token=====",token);
+if (!token) {
+	navigate("/green", { replace: true });
+}
+
+
+
+
+
   useEffect(() => {
 
+
+	
+
+	
+
 	let userDetailStr = Cookies.get("userDetail");
-	let userDetail = JSON.parse(userDetailStr);
+      if(userDetailStr && userDetailStr !=="") {
+
+      }
+      else {
+        userDetailStr = "{}";
+      }
+	  let userDetail = JSON.parse(userDetailStr);
 
 
 	console.log(userDetail);
@@ -89,7 +114,7 @@ function Dashboard() {
 	  }
 
 	  getDashboardData();
-  }, [loginStand]);
+  }, [ loginStand]);
 
   
 //loginStand

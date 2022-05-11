@@ -26,7 +26,7 @@ export const api = async (options, ctx = null) => {
     'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS' }})
     .then((response) => {
       return response;
-      console.log(response);
+      //console.log(response);
     });
 
 

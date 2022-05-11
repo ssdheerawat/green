@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 //import {BASE_URL} from '../constants';
 import logo from '../logo.png';
 import Cookies from "js-cookie";
@@ -6,37 +6,26 @@ import Cookies from "js-cookie";
 //import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css 
 //
 //import { api } from "../api";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 const Header = (props) => {
 
-     //const loginStand = Cookies.get("loginStand");
 
+  
+    
 
-      const [isLoggedin, setIsLoggedin] = useState(false);
-      const [UserDetail, setUserDetail] = useState([]);
-
-      let navigate = useNavigate();
-
-      useEffect(() => {
-
-
+      //let navigate = useNavigate();
 
       let userDetailStr = Cookies.get("userDetail");
       if(userDetailStr && userDetailStr !=="") {
-
-        setIsLoggedin(true);
-         
+        
       }
       else {
         userDetailStr = "{}";
       }
 
-      let UserDetailArr = JSON.parse(userDetailStr);
-
-      setUserDetail(UserDetailArr);
-      //console.log("userDetail",UserDetail);
-    }, [ navigate]);
+      const userDetail = JSON.parse(userDetailStr);
+      console.log("userDetail",userDetail);
       
 
       
@@ -52,9 +41,8 @@ const Header = (props) => {
 
           Cookies.remove("userDetail");
           Cookies.remove("token");
-          setIsLoggedin(false);
 
-          navigate("/green", { replace: true });
+          //navigate("/green", { replace: true });
 
     
   
@@ -66,7 +54,7 @@ const Header = (props) => {
 
       return ( <div className="header1" >
           
-          <nav
+      <nav
             className="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
             id="layout-navbar"
           >
@@ -81,7 +69,7 @@ const Header = (props) => {
                   GreenRide
               </div>
          
-              {isLoggedin   ? 
+              {typeof userDetail !== "undefined" && typeof userDetail.fullname !== "undefined"  ? 
               <ul className="navbar-nav flex-row align-items-center ms-auto">
             
                
@@ -91,7 +79,7 @@ const Header = (props) => {
 
                 <span className="nav-link dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                     <div className="avatar avatar-online">
-                      <img src={UserDetail.profile_photo_full} alt="..." className="w-px-40 h-auto rounded-circle" />
+                      <img src={userDetail.profile_photo_full} alt="..." className="w-px-40 h-auto rounded-circle" />
                     </div>
                     </span>
                  
@@ -106,7 +94,7 @@ const Header = (props) => {
                             </div>
                           </div>
                           <div className="flex-grow-1">
-                            <span className="fw-semibold d-block">{UserDetail.fullname}</span>
+                            <span className="fw-semibold d-block">{userDetail.fullname}</span>
                             <small className="text-muted">Stand Attendant</small>
                           </div>
                         </div>
@@ -141,6 +129,7 @@ const Header = (props) => {
           </nav>
     </div>
       )
-  }
+    }
+  
 
 export default Header;
