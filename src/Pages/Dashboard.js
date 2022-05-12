@@ -242,6 +242,7 @@ IsStandOpen && IsloginStand
 
 
 			{ IsloginStand ? 
+			<div>
 			<div className="d-flex flex-wrap dashcard" id="icons-container">
                 <div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2">
 				<Link   to={{pathname: '/green/cycles',status:1}} > 
@@ -270,6 +271,41 @@ IsStandOpen && IsloginStand
                   </div>
 				  </Link>
                 </div>
+				</div>
+
+
+				<div>
+				<div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2">
+				<div className="card-header">Staff On this stand </div>
+			
+                  <div className="card-body">
+				  <div className="table-responsive text-nowrap">
+
+					  
+						  { typeof DashboardData.otherStaff !== 'undefined' ? 
+							  
+									DashboardData.otherStaff.map((item, index) => {
+									return (
+								
+										<div style={{textColor:'#fff', alignItems:'center', textAlign:'center', display:'inline-block', padding:10 }}><div class="avatar avatar-online">
+										<img src={item.profile_photo} alt="..." class="w-px-40 h-auto rounded-circle" />
+										</div> {item.fullname} </div>
+								
+									)
+									})
+							
+                              : null }
+							  
+						
+					  </div>
+                   
+                  </div>
+				  
+                </div>
+				</div>
+
+
+
 				</div>
 				:
 				null
