@@ -115,13 +115,7 @@ const Header = (props) => {
                     <li>
                       <div className="dropdown-divider"></div>
                     </li>
-                    <li>
-                        <a className="dropdown-item" href="auth-login-basic.html">
-                        <i className="bx bx-user me-2"></i>
-                        <span className="align-middle">My Profile</span>
-                        </a>
-                      
-                    </li>
+                  
         
                     <li>
                        

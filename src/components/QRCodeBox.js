@@ -310,7 +310,7 @@ const QRCodeBox = (props) => {
     }
     else if(qraction === 'receive') {
       //ReceiveCycleAPI('MTAwMg==', qrtype, qraction );
-      ReceiveCycleAPI('MzEwNg==', qrtype, qraction );  //3106
+      //ReceiveCycleAPI('MzEwNg==', qrtype, qraction );  //3106
       // MzEwNg==
     }
     
