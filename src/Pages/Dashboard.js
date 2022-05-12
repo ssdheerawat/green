@@ -137,16 +137,16 @@ if (!token) {
 				<td className="disabledClick">
 { 
 IsloginStand  && IsStandOpen
-?  <Link to="/green/issue" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-cycling"></i></div><div className="card-title">Issue</div></Link>
-: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-cycling"></i></div><div className="card-title">Issue</div></Link>
+?  <Link to="/green/issue" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-cycling"></i></div><div className="card-title">Issue ({DashboardData.issued})</div></Link>
+: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-cycling"></i></div><div className="card-title">Issue ({DashboardData.issued})</div></Link>
 }
 						
 				</td>
 				<td className="disabledClick">
 				{ 
 				IsloginStand  && IsStandOpen
-				?  <Link to="/green/deposit" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-briefcase"></i></div><div className="card-title">Deposit</div></Link>
-				: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-briefcase"></i></div><div className="card-title">Deposit</div></Link>
+				?  <Link to="/green/deposit" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-briefcase"></i></div><div className="card-title">Deposit ({DashboardData.deposit})</div></Link>
+				: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-briefcase"></i></div><div className="card-title">Deposit ({DashboardData.deposit})</div></Link>
 				}
 
 
@@ -174,8 +174,8 @@ IsloginStand  && IsStandOpen
 			<td className="disabledClick">
 			{ 
 			IsloginStand
-			?  <Link to="/green/transfer" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-transfer"></i></div><div className="card-title">Transfer</div></Link>
-			: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-transfer"></i></div><div className="card-title">Transfer</div></Link>
+			?  <Link to="/green/transfer" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-transfer"></i></div><div className="card-title">Transfer ({DashboardData.transfered})</div></Link>
+			: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-transfer"></i></div><div className="card-title">Transfer ({DashboardData.transfered})</div></Link>
 			}
 
 				</td>
@@ -183,8 +183,8 @@ IsloginStand  && IsStandOpen
 
 					{ 
 					IsloginStand
-					?  <Link to="/green/receive" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-download"></i></div><div className="card-title">Receive</div></Link>
-					: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-download"></i></div><div className="card-title">Receive</div></Link>
+					?  <Link to="/green/receive" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-download"></i></div><div className="card-title">Receive ({DashboardData.received})</div></Link>
+					: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-download"></i></div><div className="card-title">Receive ({DashboardData.received})</div></Link>
 					}
 					
 				</td>
