@@ -78,7 +78,7 @@ const Header = (props) => {
             <img src={logo} alt="Logo" style={{    width: 38, height: 38, borderRadius:25, marginRight:15}} />
         
               <div className="navbar-nav align-items-center nav-title">
-                  GreenRide V3
+                  GreenRide V4
               </div>
          
               {isLoggedin   ? 

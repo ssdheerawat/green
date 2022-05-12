@@ -244,25 +244,31 @@ IsStandOpen && IsloginStand
 			{ IsloginStand ? 
 			<div className="d-flex flex-wrap dashcard" id="icons-container">
                 <div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2">
+				<Link   to={{pathname: '/green/cycles',status:1}} > 
                   <div className="card-body">
                     <i className="bx bxl-adobe mb-2"></i>
                     <p className="icon-name text-capitalize text-truncate mb-0">Total Cycle</p>
                     <p className="icon-name text-capitalize text-truncate mb-0">{DashboardData.totalCycle}</p>
                   </div>
+				  </Link>
                 </div>
                 <div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2">
+				<Link   to={{pathname: '/green/cycles',status:1}} > 
                   <div className="card-body">
                     <i className="bx bxl-algolia mb-2"></i>
                     <p className="icon-name text-capitalize text-truncate mb-0">On Road</p>
                     <p className="icon-name text-capitalize text-truncate mb-0">{DashboardData.totalOnroad}</p>
                   </div>
+				  </Link>
                 </div>
                 <div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2">
+				<Link   to={{pathname: '/green/cycles',status:1}} > 
                   <div className="card-body">
                     <i className="bx bxl-audible mb-2"></i>
                     <p className="icon-name text-capitalize text-truncate mb-0">Stock</p>
                     <p className="icon-name text-capitalize text-truncate mb-0">{DashboardData.totalStock}</p>
                   </div>
+				  </Link>
                 </div>
 				</div>
 				:

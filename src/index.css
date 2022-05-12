@@ -89,3 +89,5 @@ code {
     .card .card-header .card-tools{float: right;}
 
     .dashcard .card-body{padding: 1rem;min-width: 100px;font-weight: bold;}
+
+    #icons-container a{color: #fff;}

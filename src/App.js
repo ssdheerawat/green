@@ -53,6 +53,7 @@ function App() {
                         <Route exact path="green/stand-inout" element={<StandInOut />} />
                         <Route exact path="green/app-link" element={<AppLinkShare />} />
                         <Route exact path="green/onroad" element={<CyclesList />} />
+                        <Route exact path="green/cycles" element={<CyclesList />} />
                         <Route exact path="green/transaction" element={<TransactionList />} />
                         
 
