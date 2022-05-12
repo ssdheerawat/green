@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 //
 //import { api } from "../api";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
 
@@ -15,6 +16,20 @@ const Header = (props) => {
 
       const [isLoggedin, setIsLoggedin] = useState(false);
       const [UserDetail, setUserDetail] = useState([]);
+
+      const [date, setDate] = React.useState(new Date());
+
+      //Replaces componentDidMount and componentWillUnmount
+      React.useEffect(() => {
+       var timerID = setInterval( () => tick(), 1000 );
+       return function cleanup() {
+           clearInterval(timerID);
+         };
+      });
+     
+        function tick() {
+         setDate(new Date());
+        }
 
       let navigate = useNavigate();
 
@@ -83,6 +98,8 @@ const Header = (props) => {
          
               {isLoggedin   ? 
               <ul className="navbar-nav flex-row align-items-center ms-auto">
+
+              <li className="nav-item me-2">{date.toLocaleTimeString()}  </li>
             
                
 
@@ -114,6 +131,13 @@ const Header = (props) => {
                     </li>
                     <li>
                       <div className="dropdown-divider"></div>
+                    </li>
+
+                    <li>
+                      <Link to="/green/change-password" className="dropdown-item">
+                          <i className="bx bx-lock-open me-2"></i>
+                          <span className="align-middle">Change Password</span>
+                      </Link>
                     </li>
                   
         

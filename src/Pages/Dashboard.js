@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Cookies from "js-cookie";
 import { api } from "../api";
 import { useNavigate } from "react-router-dom";
+//import loadingImg from '../assets/img/loader.gif';
 
 
 function Dashboard() {
@@ -120,6 +121,10 @@ if (!token) {
 //loginStand
   return (
     <div>
+
+	
+
+		
 
 		{ IsloginStand ? 
 		<div className="card darkcard" >
@@ -287,9 +292,10 @@ IsStandOpen && IsloginStand
 									DashboardData.otherStaff.map((item, index) => {
 									return (
 								
-										<div style={{textColor:'#fff', alignItems:'center', textAlign:'center', display:'inline-block', padding:10 }}><div class="avatar avatar-online">
-										<img src={item.profile_photo} alt="..." class="w-px-40 h-auto rounded-circle" />
-										</div> {item.fullname} </div>
+										<div key={index} style={{textColor:'#fff', alignItems:'center', textAlign:'center', display:'inline-block', paddingLeft:15, paddingRight:15  }}>
+											<div className="">
+											<img src={item.profile_photo} alt="..." className="w-px-40 h-auto rounded-circle" />
+											</div> {item.fullname} </div>
 								
 									)
 									})
@@ -314,7 +320,7 @@ IsStandOpen && IsloginStand
 
 
 
-
+			
 			<ToastContainer/>
     </div>
   );

@@ -18,6 +18,7 @@ import CyclesList from './Pages/CyclesList';
 import TransactionList from './Pages/TransactionList';
 
 import Login from './Pages/Login';
+import ChangePassword from './Pages/ChangePassword';
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
                         <Route exact path="green/app-link" element={<AppLinkShare />} />
                         <Route exact path="green/onroad" element={<CyclesList />} />
                         <Route exact path="green/cycles" element={<CyclesList />} />
+                        <Route exact path="green/change-password" element={<ChangePassword />} />
                         <Route exact path="green/transaction" element={<TransactionList />} />
                         
 
