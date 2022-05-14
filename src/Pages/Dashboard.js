@@ -197,7 +197,7 @@ IsloginStand  && IsStandOpen
 
 { 
 IsStandOpen && IsloginStand
-?  <Link to="/green/green/stand-inout" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-lock-open"></i></div><div className="card-title">Close Stand</div></Link>
+?  <Link to="/green/stand-inout" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-lock-open"></i></div><div className="card-title">Close Stand</div></Link>
 : null
 }
 { 

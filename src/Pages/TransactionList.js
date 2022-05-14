@@ -53,7 +53,7 @@ function TransactionList(props) {
   return (
     <div>
 
-<div class="card darkcard"><div class="card-header"><i class="tf-icons bx bx-cycling"></i> Transactions  </div></div>
+<div className="card darkcard"><div className="card-header"><i className="tf-icons bx bx-cycling"></i> Transactions  </div></div>
 
 <div className="table-responsive text-nowrap">
                   <table className="table table-bordered">

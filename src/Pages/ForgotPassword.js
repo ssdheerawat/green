@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { api } from "../api";
 
 import Cookies from "js-cookie";
@@ -8,9 +8,11 @@ import { useNavigate } from "react-router-dom";
 import logo from '../logo.png';
 
 
-const Login = (props) => {
+const ForgotPassword = (props) => {
 
     let navigate = useNavigate();
+    const [IsOTPSend, SetIsOTPSend] = useState(false);
+    const [MobileNo, SetMobileNo] = useState("");
 
     useEffect(() => {
         let token = Cookies.get("token");
@@ -33,15 +35,15 @@ const Login = (props) => {
     //Prevent page reload
     event.preventDefault();
 
-    var { uname, pass } = document.forms[0];
-    console.log(uname);
+    var { mobile } = document.forms[0];
+    console.log(mobile);
  
 
 
     const response = await api({
-        url: "staff/login",
+        url: "staff/send-otp",
         method: "POST",
-        data: { "phone":uname.value, "password":pass.value },
+        data: { "mobile":mobile.value },
       });
 
       console.log("response", response);
@@ -49,20 +51,12 @@ const Login = (props) => {
 
       if (response.status) {
         //setIsLoading(false);
-
-          Cookies.set("user_id", response.data.id);
-
-          Cookies.set( "userDetail",JSON.stringify(response.data));
-
-          Cookies.set("token",response.data.token);
-      
-          //Cookies.remove("detail");
-          //Cookies.remove("remember");
-        
+          SetIsOTPSend(true);
+          SetMobileNo(mobile.value);
 
           console.log("response.message",response.message);
           toast.success(response.message);
-          navigate("/green/dashboard", { replace: true });
+         
         
         //setBusinessFormData();
       } else {
@@ -72,18 +66,48 @@ const Login = (props) => {
       }
 
 
-    // Find user login info
-    //const userData = database.find((user) => user.username === uname.value);
+  };
+
+  const handleVerifyOTP = async (event) => {
+    //Prevent page reload
+    event.preventDefault();
+
+    var { otp } = document.forms[0];
+    console.log(otp);
+ 
+
+
+    const response = await api({
+        url: "staff/vetify-otp",
+        method: "POST",
+        data: { "mobile":MobileNo,  "otp":otp.value },
+      });
+
+      console.log("response", response);
+
+
+      if (response.status) {
+
+          Cookies.set("user_id", response.data.id);
+          Cookies.set( "userDetail",JSON.stringify(response.data));
+          Cookies.set("token",response.data.token);
+
+          console.log("response.message",response.message);
+          toast.success(response.message);
+          navigate("/green/dashboard", { replace: true });
+
+      } else {
+        // setisLoading(flase);
+        toast.error(response.message);
+        //alert("Something went wrong");
+      }
 
 
   };
 
 
-  const ForgotPassword = async() => {
 
-    navigate("/green/forgot-password", { replace: true });
-
-};
+ 
 
   // Generate JSX code for error message
 
@@ -112,9 +136,41 @@ const Login = (props) => {
                  
                
               </div>
+
+              {IsOTPSend ?
+
+<div>
           
-              <h4 className="mb-2 text-center">Welcome to GreenRide! 👋</h4>
-              <p className="mb-4 text-center">Please sign-in to your account and start the adventure</p>
+<h4 className="mb-2 text-center">Verify OTP</h4>
+<p className="mb-4 text-center">Enter your OTP</p>
+
+<form id="formAuthentication" className="mb-3" onSubmit={handleVerifyOTP} method="POST">
+  <div className="mb-3 text-left" >
+    <label className="form-label">Enter OTP</label>
+    <input
+      type="text"
+      className="form-control"
+      id="otp"
+      name="otp"
+      placeholder="Enter your OTP"
+      maxLength={4}
+      required
+    />
+
+  </div>
+  
+  <div className="mb-3">
+    <button className="btn btn-primary d-grid w-100" type="submit">Submit</button>
+  </div>
+</form>
+</div>
+
+
+              :
+              <div>
+          
+              <h4 className="mb-2 text-center">Forgot Password</h4>
+              <p className="mb-4 text-center">Enter your mobile number and we will send you OTP</p>
 
               <form id="formAuthentication" className="mb-3" onSubmit={handleSubmit} method="POST">
                 <div className="mb-3 text-left" >
@@ -122,38 +178,21 @@ const Login = (props) => {
                   <input
                     type="text"
                     className="form-control"
-                    id="uname"
-                    name="uname"
+                    id="mobile"
+                    name="mobile"
                     placeholder="Enter your Mobile No"
+             
                     required
                   />
               
                 </div>
-                <div className="mb-3 form-password-toggle">
-                  <div className="d-flex justify-content-between">
-                    <label className="form-label" >Password</label>
-                   
-                      <small onClick={()=>ForgotPassword()}>Forgot Password?</small>
-                    
-                  </div>
-                  <div className="input-group input-group-merge">
-                    <input
-                      type="password"
-                      id="password"
-                      className="form-control"
-                      name="pass"
-                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                      aria-describedby="password"
-                    />
-                  
-                    <span className="input-group-text cursor-pointer"><i className="bx bx-hide"></i></span>
-                  </div>
-                </div>
-               
+                
                 <div className="mb-3">
-                  <button className="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                  <button className="btn btn-primary d-grid w-100" type="submit">Submit</button>
                 </div>
               </form>
+              </div>
+              }
 
          
             </div>
@@ -168,4 +207,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default ForgotPassword;

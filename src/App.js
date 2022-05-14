@@ -19,6 +19,7 @@ import TransactionList from './Pages/TransactionList';
 
 import Login from './Pages/Login';
 import ChangePassword from './Pages/ChangePassword';
+import ForgotPassword from './Pages/ForgotPassword';
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
                         <Route exact path="green/onroad" element={<CyclesList />} />
                         <Route exact path="green/cycles" element={<CyclesList />} />
                         <Route exact path="green/change-password" element={<ChangePassword />} />
+                        <Route exact path="green/forgot-password" element={<ForgotPassword />} />
                         <Route exact path="green/transaction" element={<TransactionList />} />
                         
 
