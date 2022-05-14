@@ -89,7 +89,7 @@ const QRCodeBox = (props) => {
     const response = await api({
       url: 'staff/stand-inout',
       methode: "POST",
-      data: {"stand_id": qrCode},
+      data: {"stand_id": qrCode,"lat": position.latitude,"lng": position.longitude},
     });
 
     console.log("response===", response);
@@ -115,7 +115,7 @@ const QRCodeBox = (props) => {
       }
   };
 
-  const IssueCycle = async (qrCode, qrtype, qraction) => {
+  const IssueCycle = async (qrCode) => {
 
     console.log("Get Cycle QR ");
 
@@ -132,15 +132,14 @@ const QRCodeBox = (props) => {
 
   };
 
-  const IssueCycleAPI = async (qrCode, qrtype, qraction) => {
+  const IssueCycleAPI = async (qrCode, position) => {
 
     
     let CycleQR = Cookies.get("cycleQrCode");
     const response = await api({
       url: 'staff/issue',
       methode: "POST",
-      data: {"cycle_id": CycleQR,"user_id": qrCode,
-      "latitude":"4234","longitude":"34234324"},
+      data: {"cycle_id": CycleQR,"user_id": qrCode,"latitude": position.latitude,"longitude": position.longitude},
     });
 
     console.log("response===", response);
@@ -175,13 +174,13 @@ const QRCodeBox = (props) => {
       }
   };
 
-  const DepositCycleAPI = async (qrCode, qrtype, qraction) => {
+  const DepositCycleAPI = async (qrCode, position) => {
 
     const response = await api({
       url: 'staff/deposit',
       methode: "POST",
       data: {"cycle_id": qrCode,
-      "latitude":"4234","longitude":"34234324"},
+      "latitude": position.latitude,"longitude": position.longitude},
     });
 
     console.log("response===", response);
@@ -202,7 +201,7 @@ const QRCodeBox = (props) => {
       }
   };
 
-  const TransferCycleAPI = async (qrCode, qrtype, qraction) => {
+  const TransferCycleAPI = async (qrCode, position) => {
 
 
 
@@ -210,7 +209,7 @@ const QRCodeBox = (props) => {
       url: 'staff/transfer',
       methode: "POST",
       data: {"cycle_id": qrCode,
-      "latitude":"4234","longitude":"34234324"},
+      "latitude": position.latitude,"longitude": position.longitude},
     });
 
     console.log("response===", response);
@@ -220,12 +219,17 @@ const QRCodeBox = (props) => {
 
      
         let TransferListArr = TransferList;
-        TransferListArr.push(response.data.cycle_no);
-        setTransferList(TransferListArr);
-        console.log("TransferList==",TransferList);
-        //cycle_no
+        if(TransferListArr.includes(response.data.cycle_no)) {
+          toast.error("Cycle ["+ response.data.cycle_no+ "] already added into  your list!");
+        }
+        else {
+          TransferListArr.push(response.data.cycle_no);
+          setTransferList(TransferListArr);
+          console.log("TransferList==",TransferList);
+          //cycle_no
 
-        toast.success(response.message);
+          toast.success(response.message);
+        }
 
     }else {
         
@@ -233,14 +237,14 @@ const QRCodeBox = (props) => {
       }
   };
 
-  const ReceiveCycleAPI = async (qrCode, qrtype, qraction) => {
+  const ReceiveCycleAPI = async (qrCode, position) => {
 
 
 
     const response = await api({
       url: 'staff/receive',
       methode: "POST",
-      data: {"cycle_id": qrCode},
+      data: {"cycle_id": qrCode,"latitude": position.latitude,"longitude": position.longitude},
     });
 
     console.log("response===", response);
@@ -306,9 +310,10 @@ const QRCodeBox = (props) => {
       //DepositCycleAPI('MTAwMg==', qrtype, qraction );
     }
     else if(qraction === 'transfer') {
-       //TransferCycleAPI('MTAwMg==', qrtype, qraction );
+       //TransferCycleAPI('MzEwMg==', qrtype, qraction );
     }
     else if(qraction === 'receive') {
+
       //ReceiveCycleAPI('MTAwMg==', qrtype, qraction );
       //ReceiveCycleAPI('MzEwNg==', qrtype, qraction );  //3106
       // MzEwNg==
