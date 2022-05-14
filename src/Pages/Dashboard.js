@@ -75,6 +75,16 @@ if (!token) {
 
   useEffect(() => {
 
+	  navigator.geolocation.getCurrentPosition(function(position) {
+		console.log("Latitude is :", position.coords.latitude);
+		console.log("Longitude is :", position.coords.longitude);
+	  },
+	  function(error) {
+		toast.error(error.message);
+        console.error("Error Code = " + error.code + " - " + error.message);
+      }
+	  );
+
 
 	
 

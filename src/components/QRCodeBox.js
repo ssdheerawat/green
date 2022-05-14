@@ -1,7 +1,7 @@
 import React, { useState,useEffect, useRef  } from 'react';
 import { QrReader } from 'react-qr-reader';
 import { useTorchLight } from '@blackbox-vision/use-torch-light';
-import {ApiMethods} from '../constants';
+//import {ApiMethods} from '../constants';
 import { api } from "../api";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -37,13 +37,13 @@ const QRCodeBox = (props) => {
   const heading = props.heading;
 
 
-  const SelfAtendanceAPI = async (qrCode, qrtype, qraction) => {
+  const SelfAtendanceAPI = async (qrCode, position) => {
     const response = await api({
-      url: ApiMethods.SelfAtendance,
+      url: "staff/self-atendance",
       methode: "POST",
       data: {"stand_id": qrCode,
-      "lat": "102457",
-      "lng": "102457"},
+      "lat": position.latitude,
+      "lng": position.longitude},
     });
 
     console.log("response===", response);
@@ -82,7 +82,7 @@ const QRCodeBox = (props) => {
       }
   };
 
-  const StandOpenAPI = async (qrCode, qrtype, qraction) => {
+  const StandOpenAPI = async (qrCode, position) => {
 
 
 
@@ -328,6 +328,16 @@ const QRCodeBox = (props) => {
 
   useEffect(() => {
 
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log("Latitude is :", position.coords.latitude);
+      console.log("Longitude is :", position.coords.longitude);
+      },
+      function(error) {
+          toast.error(error.message);
+          console.error("Error Code = " + error.code + " - " + error.message);
+        }
+      );
+
     let errorMsg = Cookies.get("errorMsg");
 
     if(errorMsg !== "") {
@@ -373,27 +383,49 @@ onResult={(result, error) => {
      else {
       setIsQRloading(true);
        setData(result?.text);
-         if(qrtype === 'stand' && qraction==="open") {
-           SelfAtendanceAPI(result?.text, qrtype, qraction );
-         }
-         else if(qrtype === 'stand' && qraction==="inout" ) {
-          StandOpenAPI(result?.text, qrtype, qraction );
+
+
+       navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Latitude is :", position.coords.latitude);
+            console.log("Longitude is :", position.coords.longitude);
+
+
+            if(qrtype === 'stand' && qraction==="open") {
+              SelfAtendanceAPI(result?.text, position.coords );
+            }
+            else if(qrtype === 'stand' && qraction==="inout" ) {
+             StandOpenAPI(result?.text, position.coords );
+             }
+            else if(qrtype === 'cycle' && qraction==="issue") {
+              IssueCycle(result?.text, position.coords );
+            }
+            else if(qrtype === 'user' && qraction==="issue" ) {
+              IssueCycleAPI(result?.text, position.coords );
+            }
+            else if(qrtype === 'cycle' && qraction==="deposit" ) {
+              DepositCycleAPI(result?.text, position.coords );
+            }
+            else if(qrtype === 'cycle' && qraction === 'transfer') {
+              TransferCycleAPI(result?.text,  position.coords );
+            }
+            else if(qrtype === 'cycle' && qraction === 'receive') {
+             ReceiveCycleAPI(result?.text,  position.coords );
+           }
+
+
+
+        },
+        function(error) {
+            toast.error(error.message);
+            console.error("Error Code = " + error.code + " - " + error.message);
           }
-         else if(qrtype === 'cycle' && qraction==="issue") {
-           IssueCycle(result?.text, qrtype, qraction );
-         }
-         else if(qrtype === 'user' && qraction==="issue" ) {
-           IssueCycleAPI(result?.text, qrtype, qraction );
-         }
-         else if(qrtype === 'cycle' && qraction==="deposit" ) {
-           DepositCycleAPI(result?.text, qrtype, qraction );
-         }
-         else if(qrtype === 'cycle' && qraction === 'transfer') {
-           TransferCycleAPI(result?.text,  qrtype, qraction );
-         }
-         else if(qrtype === 'cycle' && qraction === 'receive') {
-          ReceiveCycleAPI(result?.text,  qrtype, qraction );
-        }
+        );
+
+       
+
+
+
+        
      }
    }
 
