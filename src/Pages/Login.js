@@ -36,12 +36,12 @@ const Login = (props) => {
     var { uname, pass } = document.forms[0];
     console.log(uname);
  
-
+    let access_token = Cookies.get("access_token");
 
     const response = await api({
         url: "staff/login",
         method: "POST",
-        data: { "phone":uname.value, "password":pass.value },
+        data: { "phone":uname.value, "password":pass.value, "access_token":access_token },
       });
 
       console.log("response", response);
@@ -55,6 +55,7 @@ const Login = (props) => {
           Cookies.set( "userDetail",JSON.stringify(response.data));
 
           Cookies.set("token",response.data.token);
+          Cookies.set("access_token",response.data.access_token);
       
           //Cookies.remove("detail");
           //Cookies.remove("remember");
@@ -113,7 +114,7 @@ const Login = (props) => {
                
               </div>
           
-              <h4 className="mb-2 text-center">Welcome to GreenRide! 👋</h4>
+              <h4 className="mb-2 text-center">Welcome to MyBicycles! 👋</h4>
               <p className="mb-4 text-center">Please sign-in to your account and start the adventure</p>
 
               <form id="formAuthentication" className="mb-3" onSubmit={handleSubmit} method="POST">

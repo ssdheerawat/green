@@ -18,7 +18,7 @@ class Sidebar extends React.Component {
         <span className="app-brand-logo demo">
          
         </span>
-        <span className="app-brand-text demo menu-text fw-bolder ms-2">GreenRide</span>
+        <span className="app-brand-text demo menu-text fw-bolder ms-2">MyBicycles</span>
       </a>
 
       <a href="#/nouse" className="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">

@@ -93,13 +93,13 @@ const Header = (props) => {
             <img src={logo} alt="Logo" style={{    width: 38, height: 38, borderRadius:25, marginRight:15}} />
         
               <div className="navbar-nav align-items-center nav-title">
-                  GreenRide V5
+               MyBicycles V2<br/>
+               <small style={{fontSize:10}}>{date.toLocaleTimeString('en-IN', {timeZone: 'Asia/Kolkata', year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'})}</small>
               </div>
          
               {isLoggedin   ? 
               <ul className="navbar-nav flex-row align-items-center ms-auto">
 
-              <li className="nav-item me-2">{date.toLocaleTimeString()}  </li>
             
                
 

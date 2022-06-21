@@ -1,4 +1,4 @@
-export const PROJECTNAME = 'GreenRide';
+export const PROJECTNAME = 'MyBicycles';
 export const GOOGLEKEY = 'upload here your api key';
 
 // API METHODS NAME //

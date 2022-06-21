@@ -15,6 +15,7 @@ import Receive from './Pages/Receive';
 import StandInOut from './Pages/StandInOut';
 import AppLinkShare from './Pages/AppLinkShare';
 import CyclesList from './Pages/CyclesList';
+import CyclesListOnroad from './Pages/CyclesListOnroad';
 import TransactionList from './Pages/TransactionList';
 
 import Login from './Pages/Login';
@@ -54,7 +55,7 @@ function App() {
                         <Route exact path="green/receive" element={<Receive />} />
                         <Route exact path="green/stand-inout" element={<StandInOut />} />
                         <Route exact path="green/app-link" element={<AppLinkShare />} />
-                        <Route exact path="green/onroad" element={<CyclesList />} />
+                        <Route exact path="green/onroad" element={<CyclesListOnroad />} />
                         <Route exact path="green/cycles" element={<CyclesList />} />
                         <Route exact path="green/change-password" element={<ChangePassword />} />
                         <Route exact path="green/forgot-password" element={<ForgotPassword />} />
