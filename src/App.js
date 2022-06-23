@@ -17,6 +17,8 @@ import AppLinkShare from './Pages/AppLinkShare';
 import CyclesList from './Pages/CyclesList';
 import CyclesListOnroad from './Pages/CyclesListOnroad';
 import TransactionList from './Pages/TransactionList';
+import StandsList from './Pages/StandsList';
+import StaffList from './Pages/StaffList';
 
 import Login from './Pages/Login';
 import ChangePassword from './Pages/ChangePassword';
@@ -60,6 +62,8 @@ function App() {
                         <Route exact path="green/change-password" element={<ChangePassword />} />
                         <Route exact path="green/forgot-password" element={<ForgotPassword />} />
                         <Route exact path="green/transaction" element={<TransactionList />} />
+                        <Route exact path="green/stands" element={<StandsList />} />
+                        <Route exact path="green/staff" element={<StaffList />} />
                         
 
                         <Route exact path="green" element={<Login />} />

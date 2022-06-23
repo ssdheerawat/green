@@ -104,3 +104,7 @@ code {
       background: url('//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/50px-Phi_fenomeni.gif') 
                   50% 50% no-repeat rgb(249,249,249);
     }
+
+    .standsList .status1.yesterday{background-color: red;color: #fff;}
+    .standsList .status1{background-color: blue;color: #fff;}
+    .standsList .status2{background-color: green;color: #fff;}

@@ -101,7 +101,7 @@ if (!token) {
 
 
 	console.log(userDetail);
-
+	
 
 	
 	let standOpen = Cookies.get("standOpen");
@@ -140,6 +140,13 @@ if (!token) {
 		<div className="card darkcard" >
 		<div className="card-header">
 		<h3 className="card-title form-title"><i className="tf-icons bx bx-cycling"></i> {loginStand}</h3>
+
+
+			{ (DashboardData?.role_id === 1 || DashboardData?.role_id === 2 || DashboardData?.role_id === 3) &&
+			<div></div>
+			}
+
+
 		</div>
 		</div>
 		:
@@ -326,6 +333,32 @@ IsStandOpen && IsloginStand
 				:
 				null
 				}
+
+
+			{ (DashboardData?.role_id === 1 || DashboardData?.role_id === 2 || DashboardData?.role_id === 3) &&
+			
+			
+			<div className="card">
+				<div className="card-body">
+					<div className="row">
+						<div className="col-sm-6">
+							<Link to="/green/stands" className="dash-link">
+							<button type="button" className="btn btn-primary">
+                              <span className="tf-icons bx bx-pie-chart-alt"></span>&nbsp; My Stands
+                            </button>
+							</Link>
+							</div>
+						<div className="col-sm-6">
+						<Link to="/green/staff" className="dash-link">
+							<button type="button" className="btn btn-primary">
+                              <span className="tf-icons bx bx-pie-chart-alt"></span>&nbsp; Staff
+                            </button>
+							</Link>
+							</div>
+					</div>
+				</div>
+			</div>
+			}
 
 
 
