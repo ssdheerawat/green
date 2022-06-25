@@ -3,7 +3,7 @@ export const GOOGLEKEY = 'upload here your api key';
 
 // API METHODS NAME //
 //export const BASE_URL = 'http://10.0.2.2/gogreen/public/api/'; //DEMO
-export const BASE_URL = 'https://onlycard.in/green/public/api/'; //DEMO
+export const BASE_URL = 'https://mybicycles.in/api/'; //DEMO
 
 export const ApiMethods = {
    //LOGIN MOODULE
