@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-
+import Moment from 'react-moment';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api } from "../api";
@@ -57,32 +57,44 @@ function CyclesListOnroad(props) {
                   <table className="table table-bordered">
                     <thead className="table-dark">
                               <tr>
-                                <th>S.No</th>
-                                <th>Cycle No.</th>
+                                <th style={{width:50}}>S.No</th>
                                 <th>Stand</th>
-                                <th>Group</th>
-                                <th>Status</th>
+                                <th style={{width:100}}>By</th>
+                                <th>Name</th>
+                                <th style={{width:100}}>Cycle No.</th>
+                                <th>Time</th>
+                                <th style={{width:100}}>Minutes</th>
                               </tr>
                               </thead>
                               <tbody className="table-border-bottom-0">
                               {
                                 getCyclesList.map((item, index) => {
+
+                                  //var end = item.DateFrom;
+
+                                  //let startShiftTime = Moment(item.DateFrom);
+                                  let startShiftTime = new Date(item.DateFrom);
+                                  let endShiftTime = new Date();
+
+                                  var difference  = endShiftTime - startShiftTime;
+                                  
+                                  var resultInMinutes = Math.round(difference / 60000)
+                                  //console.log(resultInMinutes);
+                                
                                   return (
                              
                                       <tr key={index}>
-                                        <td> {index+1} </td>
-                                        <td> {item.cycle_id} </td>
-                                        <td> {item?.stand_from_data?.title} </td>
-                                        <td> {item?.stand_from_data?.group?.title} </td>
+                                        <td> {index+1}</td>
+                                        <td> {item?.stand_from_data?.title}</td>
+                                        <td> {item?.issued_by_data?.staff_id}</td>
+                                        <td> {item?.user?.fullname}</td>
+                                        
+                                        <td> {item.cycle_id}</td>
                                         <td> 
-                                            {item.status === 2 ? 
-                                            <span className="badge bg-label-warning me-1">On Road</span>
-                                            :
-                                            <span className="badge bg-label-success me-1">In Stock</span>
-                                            
-                                        } 
+                                            <Moment date={item.DateFrom} format="DD/MM/YYYY hh:mm A" />
                                             
                                             </td>
+                                            <td>{resultInMinutes}</td>
                                       </tr>
                              
                                   )

@@ -186,7 +186,7 @@ function Dashboard() {
 
 		{ IsloginStand ? 
 		<div className="row">
-			<div className="col-sm-10">
+			<div className="col-10 col-sm-10">
 
 		   
 
@@ -213,7 +213,7 @@ function Dashboard() {
 			}
 
 			</div>
-			<div className="col-sm-2 txt-right"><Link to="/green/exchange" title="Exchange Cycle" className="dash-link" ><i className="tf-icons bx bx-repost"></i></Link></div>
+			<div className="col-2 col-sm-2 txt-right"><Link to="/green/exchange" title="Exchange Cycle" className="dash-link" ><i className="tf-icons bx bx-repost"></i></Link></div>
 		</div>
 		:
 		null
