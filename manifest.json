@@ -1,7 +1,7 @@
 {
-  "name": "GreenRide Staff",
-  "short_name": "GreenRide",
-  "description": "GreenRide Staff app for issue deposit cycles",
+  "name": "MyBicycles Staff",
+  "short_name": "MyBicycles",
+  "description": "MyBicycles Staff app for issue deposit cycles",
   "icons": [
     {
       "src": "icon-192x192.png",
