@@ -15,12 +15,12 @@ function StaffList(props) {
   
 
 
-  const [Transactions, setTransactions] = useState([]);
+  const [Records, setRecords] = useState([]);
 
   const getCycleListData = async () => {
 
     const response = await api({
-      url: 'staff/rides',
+      url: 'staff/staff',
       methode: "POST",
       data: {"status": "1"},
     });
@@ -31,7 +31,7 @@ function StaffList(props) {
     if (response.status) {
 		//dfdsfd
 
-		setTransactions(response.data);
+		setRecords(response.data);
 		//console.log("DashboardData",DashboardData);
         
         
@@ -53,35 +53,56 @@ function StaffList(props) {
   return (
     <div>
 
-<div className="card darkcard"><div className="card-header"><i className="tf-icons bx bx-cycling"></i> Transactions  </div></div>
+<div className="card darkcard"><div className="card-header"><h3 className="card-title form-title"><i className="tf-icons bx bx-cycling"></i> Staff OnDuty  </h3></div></div>
 
 <div className="table-responsive text-nowrap">
-                  <table className="table table-bordered">
+                  <table className="table table-bordered standsList">
                     <thead className="table-dark">
                               <tr>
                                 <th>S.No</th>
-                                <th>Cycle No.</th>
-                                <th>Customer</th>
                                 <th>Stand</th>
-                                <th>Date</th>
+                                <th>Name</th>
                                 <th>Time</th>
-                                <th>Fare</th>
-                                
+      
                               </tr>
                               </thead>
                               <tbody className="table-border-bottom-0">
                               {
-                                Transactions.map((item, index) => {
+                                Records.map((item, index) => {
+
+                                  var today = new Date().toLocaleDateString('en-CA');
+                                  var today2 = new Date(item.updated_at).toLocaleDateString('en-CA');
+                                  console.log(today +"  "+ today2);
+                                  let udate = '';
+                                  if(today2 < today) {
+                                     udate = 'yesterday';
+                                  }
+                                  else {
+                                     udate = 'today';
+                                  }
+
+                                  let status = 0;
+
+                                  if(item.out_time === "") {
+                                    status = 1;
+                                  }
+                                  else {
+                                    status = 2;
+                                  }
+
+
+
+
+
                                   return (
                              
-                                      <tr key={index}>
+                                      <tr key={index} className={"status" + status + " " + udate}>
                                         <td> {index+1} </td>
-                                        <td> {item.cycle_id} </td>
-                                        <td> {item?.user?.fullname} </td>
-                                        <td> {item?.stand_from_data?.title} </td>
-                                        <td> <Moment date={item.DateFrom} format="DD/MM/YYYY hh:mm A" /></td>
-                                        <td> {item.TotalMinute} M</td>
-                                        <td> Rs. {item.FareDeducted} </td>
+                                        <td> {item.stand.short_title} </td>
+                                        <td> {item.staff.fullname} - {item.staff.staff_id} </td>
+                                       
+                                        <td> <Moment date={item.updated_at} format="DD/MM/YYYY hh:mm A" /></td>
+                                       
                                         
                                       </tr>
                              

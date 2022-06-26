@@ -53,7 +53,7 @@ function StandsList(props) {
   return (
     <div>
 
-<div className="card darkcard"><div className="card-header"><i className="tf-icons bx bx-cycling"></i> My Stands  </div></div>
+<div className="card darkcard"><div className="card-header"><h3 className="card-title form-title"><i className="tf-icons bx bx-cycling"></i> Stand Status  </h3></div></div>
 
 <div className="table-responsive text-nowrap">
                   <table className="table table-bordered standsList">

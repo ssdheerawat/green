@@ -8,6 +8,9 @@ import { api } from "../api";
 import { useNavigate } from "react-router-dom";
 //import loadingImg from '../assets/img/loader.gif';
 
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+
 
 function Dashboard() {
 
@@ -20,7 +23,8 @@ function Dashboard() {
   const [IsloginStand, setIsloginStand] = useState(false);
   const [IsStandOpen, setIsIsStandOpen] = useState(false);
   const [DashboardData, setDashboardData] = useState([]);
-
+  //const [StandAccess, setStandAccess] = useState([]);
+  
   const getDashboardData = async (qrCode, qrtype, qraction) => {
 
     const response = await api({
@@ -49,7 +53,11 @@ function Dashboard() {
 		
 
 		setDashboardData(response.data);
-		//console.log("DashboardData",DashboardData);
+
+		//console.log((response.data.standAccess));
+		//setStandAccess(DashboardData.standAccess);
+		//console.log("StandAccess",StandAccess);
+		
         
         
     }else {
@@ -58,16 +66,18 @@ function Dashboard() {
       }
   };
 
+  console.log("DashboardData",DashboardData.standAccess);
+
   const loginStand = Cookies.get("loginStand");
   //standOpen
 
   let navigate = useNavigate();
 
   let token = Cookies.get("token");
-console.log("token=====",token);
-if (!token) {
-	navigate("/green", { replace: true });
-}
+	console.log("token=====",token);
+	if (!token) {
+		navigate("/green", { replace: true });
+	}
 
 
 
@@ -127,32 +137,94 @@ if (!token) {
 	  getDashboardData();
   }, [ loginStand]);
 
+
+
+  const SelfAtendanceAPI = async (newStandId) => {
+    const response = await api({
+      url: "staff/change-stand",
+      methode: "POST",
+      data: {"stand_id": newStandId},
+    });
+
+    console.log("response===", response);
+
+    if (response.status) {
+
+        Cookies.set(
+			"loginStand",
+			response.data.title
+		  );
+
+        Cookies.set(
+          "successMsg",
+          response.message
+        );
+        navigate("/green/dashboard", { replace: true });
+    }else {
+        
+        toast.error(response.message);
+        // alert("Something went wrong");
+      }
+  };
+  function onValueChange(newStandId) {
+
+	SelfAtendanceAPI(newStandId);
+
+		console.log(newStandId);
+
+  }
+
   
 //loginStand
   return (
     <div>
 
-	
 
-		
+
+<div className="card darkcard" >
+		<div className="card-header">
 
 		{ IsloginStand ? 
-		<div className="card darkcard" >
-		<div className="card-header">
-		<h3 className="card-title form-title"><i className="tf-icons bx bx-cycling"></i> {loginStand}</h3>
+		<div className="row">
+			<div className="col-sm-10">
 
+		   
 
-			{ (DashboardData?.role_id === 1 || DashboardData?.role_id === 2 || DashboardData?.role_id === 3) &&
-			<div></div>
+			{ (DashboardData?.role_id === 1 || DashboardData?.role_id === 2 || DashboardData?.role_id === 3) ?
+
+			<Popup trigger={<h3 className="card-title form-title"><i className="tf-icons bx bx-cycling"></i> {loginStand}</h3>} modal ={true}>
+			<div>
+			<ul>
+			{Object.keys(DashboardData.standAccess).map((key) => (
+				<li key={key}>
+					<div className="form-check">
+					<input className="form-check-input" type="radio" id={"newStand"+ key} name="newStand" value={key} onChange={()=>onValueChange(key)} />
+					<label className="form-check-label" htmlFor={"newStand"+ key}>
+						{DashboardData.standAccess[key]}
+					</label>
+					</div>
+					</li>
+				))}
+			</ul>
+			</div>
+		  	</Popup>
+			:
+			<h3 className="card-title form-title"><i className="tf-icons bx bx-cycling"></i> {loginStand}</h3>
 			}
 
-
-		</div>
+			</div>
+			<div className="col-sm-2 txt-right"><Link to="/green/exchange" title="Exchange Cycle" className="dash-link" ><i className="tf-icons bx bx-repost"></i></Link></div>
 		</div>
 		:
 		null
 		}	
-               
+
+		</div>
+</div>
+
+		
+
+		 
 
       <table className="table dash-link-tbl table-bordered ">
 			<tbody><tr>
@@ -344,14 +416,14 @@ IsStandOpen && IsloginStand
 						<div className="col-sm-6">
 							<Link to="/green/stands" className="dash-link">
 							<button type="button" className="btn btn-primary">
-                              <span className="tf-icons bx bx-pie-chart-alt"></span>&nbsp; My Stands
+                              <span className="tf-icons bx bx-pie-chart-alt"></span>&nbsp; Stand Status
                             </button>
 							</Link>
 							</div>
 						<div className="col-sm-6">
 						<Link to="/green/staff" className="dash-link">
 							<button type="button" className="btn btn-primary">
-                              <span className="tf-icons bx bx-pie-chart-alt"></span>&nbsp; Staff
+                              <span className="tf-icons bx bx-pie-chart-alt"></span>&nbsp; Staff OnDuty
                             </button>
 							</Link>
 							</div>

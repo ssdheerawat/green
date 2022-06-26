@@ -16,7 +16,7 @@ const AppLinkShare = (props) => {
   }
 
   async function onShare() {
-    const title = "GreenRide APP";
+    const title = "MyBicycles APP";
     const url = 'https://play.google.com/store/apps/details?id=in.greenride.greenride';
     const text = "Learn how to use the share api";
     try {

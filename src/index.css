@@ -105,6 +105,12 @@ code {
                   50% 50% no-repeat rgb(249,249,249);
     }
 
-    .standsList .status1.yesterday{background-color: red;color: #fff;}
-    .standsList .status1{background-color: blue;color: #fff;}
-    .standsList .status2{background-color: green;color: #fff;}
+    .standsList .status1.yesterday{color: red;}
+    .standsList .status1{color: blue;}
+    .standsList .status2{color: green;}
+    .popup-content{max-width: 215px !important;}
+    .popup-content ul{list-style: none;padding: 0;}
+    .popup-content ul li{border-bottom: 1px solid gainsboro;
+    }
+    .darkcard .card-header h3, h3.page-title{font-size: 18px;}
+    .txt-right{text-align: right;}

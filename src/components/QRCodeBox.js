@@ -291,6 +291,65 @@ const QRCodeBox = (props) => {
   };
 
 
+  const ExchangeCycle = async (qrCode) => {
+
+    console.log("Get Cycle QR ");
+
+    Cookies.set(
+      "cycleQrCode",
+      qrCode
+    );
+
+
+
+    navigate("/green/exchangeapi", { replace: true });
+
+
+
+  };
+
+  const ExchangeCycleAPI = async (qrCode, position) => {
+
+    
+    let CycleQR = Cookies.get("cycleQrCode");
+    const response = await api({
+      url: 'staff/exchange',
+      methode: "POST",
+      data: {"old_cycle_id": CycleQR,"new_cycle_id": qrCode,"latitude": position.latitude,"longitude": position.longitude},
+    });
+
+    console.log("response===", response);
+    Cookies.set(
+      "cycleQrCode",
+      ""
+    );
+
+    if (response.status) {
+
+        
+        Cookies.set(
+          "successMsg",
+          response.message
+        );
+
+        toast.success(response.message);
+        navigate("/green/dashboard", { replace: true });
+    }else {
+
+
+        Cookies.set(
+          "errorMsg",
+          response.message
+        );
+
+
+        toast.error(response.message);
+
+        // alert("Something went wrong");
+        navigate("/green/exchange", { replace: true });
+      }
+  };
+
   
 
   
@@ -416,6 +475,12 @@ onResult={(result, error) => {
             else if(qrtype === 'cycle' && qraction === 'receive') {
              ReceiveCycleAPI(result?.text,  position.coords );
            }
+          else if(qrtype === 'cycle' && qraction==="exchange_old") {
+            ExchangeCycle(result?.text, position.coords );
+          }
+          else if(qrtype === 'cycle' && qraction==="exchange_new" ) {
+            ExchangeCycleAPI(result?.text, position.coords );
+          }
 
 
 

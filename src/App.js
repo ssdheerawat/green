@@ -7,6 +7,8 @@ import Header from './components/Header';
 import Dashboard from './Pages/Dashboard';
 
 import SelfAtendance from './Pages/SelfAtendance';
+import Exchange from './Pages/Exchange';
+import ExchangeAPI from './Pages/ExchangeAPI';
 import Issue from './Pages/Issue';
 import IssueApi from './Pages/IssueApi';
 import Deposit from './Pages/Deposit';
@@ -50,6 +52,8 @@ function App() {
                       
                    
                         <Route exact path="green/self-atendance" element={<SelfAtendance />} />
+                        <Route exact path="green/exchange" element={<Exchange />} />
+                        <Route exact path="green/exchangeapi" element={<ExchangeAPI />} />
                         <Route exact path="green/issue" element={<Issue />} />
                         <Route exact path="green/issueapi" element={<IssueApi />} />
                         <Route exact path="green/deposit" element={<Deposit />} />
