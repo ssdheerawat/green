@@ -369,7 +369,7 @@ IsStandOpen && IsloginStand
 
 
 				<div>
-				<div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2">
+				<div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2 staffDutyList">
 				<div className="card-header">Staff On this stand </div>
 			
                   <div className="card-body">
@@ -413,14 +413,14 @@ IsStandOpen && IsloginStand
 			<div className="card">
 				<div className="card-body">
 					<div className="row">
-						<div className="col-sm-6">
+						<div className="col-6 col-sm-6">
 							<Link to="/green/stands" className="dash-link">
 							<button type="button" className="btn btn-primary">
                               <span className="tf-icons bx bx-pie-chart-alt"></span>&nbsp; Stand Status
                             </button>
 							</Link>
 							</div>
-						<div className="col-sm-6">
+						<div className="col-6 col-sm-6">
 						<Link to="/green/staff" className="dash-link">
 							<button type="button" className="btn btn-primary">
                               <span className="tf-icons bx bx-pie-chart-alt"></span>&nbsp; Staff OnDuty

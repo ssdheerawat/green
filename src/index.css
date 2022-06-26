@@ -114,3 +114,6 @@ code {
     }
     .darkcard .card-header h3, h3.page-title{font-size: 18px;}
     .txt-right{text-align: right;}
+
+    .staffDutyList .card-header{padding: 5px;}
+    .staffDutyList .card-body{padding-bottom: 5px;}
