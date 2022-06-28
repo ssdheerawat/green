@@ -16,6 +16,7 @@ function StandsList(props) {
 
 
   const [Records, setRecords] = useState([]);
+  const [IsLoad, setIsLoad] = useState(false);
 
   const getCycleListData = async () => {
 
@@ -29,9 +30,11 @@ function StandsList(props) {
     
 
     if (response.status) {
+
 		//dfdsfd
 
 		setRecords(response.data);
+    setIsLoad(true);
 		//console.log("DashboardData",DashboardData);
         
         
@@ -67,6 +70,7 @@ function StandsList(props) {
       
                               </tr>
                               </thead>
+                              { IsLoad &&
                               <tbody className="table-border-bottom-0">
                               {
                                 Records.map((item, index) => {
@@ -122,8 +126,20 @@ function StandsList(props) {
                               }
 
                             </tbody>
+                          }
                           </table>
+
+                          
+
                           </div>
+
+                          {!IsLoad &&
+
+                              <div className="text-center"><img  src="assets/img/bicycle.gif" alt="Loading...." style={{width: '100%',
+                          maxWidth: '300px'}} /></div>
+                          }
+
+                          
 
 
 	

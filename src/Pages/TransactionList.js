@@ -16,6 +16,7 @@ function TransactionList(props) {
 
 
   const [Transactions, setTransactions] = useState([]);
+  const [IsLoad, setIsLoad] = useState(false);
 
   const getCycleListData = async () => {
 
@@ -32,6 +33,7 @@ function TransactionList(props) {
 		//dfdsfd
 
 		setTransactions(response.data);
+    setIsLoad(true);
 		//console.log("DashboardData",DashboardData);
         
         
@@ -53,10 +55,10 @@ function TransactionList(props) {
   return (
     <div>
 
-<div className="card darkcard"><div className="card-header"><i className="tf-icons bx bx-cycling"></i> Transactions  </div></div>
+<div className="card darkcard"><div className="card-header"><h3 className="card-title form-title"><i className="tf-icons bx bx-cycling"></i> Transactions</h3>  </div></div>
 
 <div className="table-responsive text-nowrap">
-                  <table className="table table-bordered">
+                  <table className="table table-bordered standsList">
                     <thead className="table-dark">
                               <tr>
                                 <th>S.No</th>
@@ -69,19 +71,20 @@ function TransactionList(props) {
                                 
                               </tr>
                               </thead>
+                              { IsLoad &&
                               <tbody className="table-border-bottom-0">
                               {
                                 Transactions.map((item, index) => {
                                   return (
                              
-                                      <tr key={index}>
+                                      <tr key={index} className={"status" + item.status}>
                                         <td> {index+1} </td>
                                         <td> {item.cycle_id} </td>
                                         <td> {item?.user?.fullname} </td>
                                         <td> {item?.stand_from_data?.title} </td>
                                         <td> <Moment date={item.DateFrom} format="DD/MM/YYYY hh:mm A" /></td>
-                                        <td> {item.TotalMinute} M</td>
-                                        <td> Rs. {item.FareDeducted} </td>
+                                        <td>{item.status ===1 ? item.TotalMinute + " M" : '--'}</td>
+                                        <td>{item.status ===1 ? "Rs."+ item.FareDeducted : '--'}</td>
                                         
                                       </tr>
                              
@@ -89,9 +92,21 @@ function TransactionList(props) {
                                 })
                               }
 
+                            {
+                                Transactions.length === 0 && 
+                                <tr><td className="text-center" colSpan={7}>No Record Found!</td></tr>
+                              }
+
                             </tbody>
+                            }
                           </table>
                           </div>
+
+                          {!IsLoad &&
+
+                          <div className="text-center"><img  src="assets/img/bicycle.gif" alt="Loading...." style={{width: '100%',
+                          maxWidth: '300px'}} /></div>
+                          }
 
 
 	

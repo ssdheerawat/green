@@ -8,8 +8,8 @@ import { api } from "../api";
 import { useNavigate } from "react-router-dom";
 //import loadingImg from '../assets/img/loader.gif';
 
-//import Popup from 'reactjs-popup';
-//import 'reactjs-popup/dist/index.css';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 
 function Dashboard() {
@@ -139,7 +139,40 @@ function Dashboard() {
 
 
 
+  const SelfAtendanceAPI = async (newStandId) => {
+    const response = await api({
+      url: "staff/change-stand",
+      methode: "POST",
+      data: {"stand_id": newStandId},
+    });
 
+    console.log("response===", response);
+
+    if (response.status) {
+
+        Cookies.set(
+			"loginStand",
+			response.data.title
+		  );
+
+        Cookies.set(
+          "successMsg",
+          response.message
+        );
+        navigate("/green/dashboard", { replace: true });
+    }else {
+        
+        toast.error(response.message);
+        // alert("Something went wrong");
+      }
+  };
+  function onValueChange(newStandId) {
+
+	SelfAtendanceAPI(newStandId);
+
+		console.log(newStandId);
+
+  }
 
   
 //loginStand
@@ -157,9 +190,27 @@ function Dashboard() {
 
 		   
 
-			
+			{ (DashboardData?.role_id === 1 || DashboardData?.role_id === 2 || DashboardData?.role_id === 3) ?
+
+			<Popup trigger={<h3 className="card-title form-title"><i className="tf-icons bx bx-cycling"></i> {loginStand}</h3>} modal ={true}>
+			<div>
+			<ul>
+			{Object.keys(DashboardData.standAccess).map((key) => (
+				<li key={key}>
+					<div className="form-check">
+					<input className="form-check-input" type="radio" id={"newStand"+ key} name="newStand" value={key} onChange={()=>onValueChange(key)} />
+					<label className="form-check-label" htmlFor={"newStand"+ key}>
+						{DashboardData.standAccess[key]}
+					</label>
+					</div>
+					</li>
+				))}
+			</ul>
+			</div>
+		  	</Popup>
+			:
 			<h3 className="card-title form-title"><i className="tf-icons bx bx-cycling"></i> {loginStand}</h3>
-			
+			}
 
 			</div>
 			<div className="col-2 col-sm-2 txt-right"><Link to="/green/exchange" title="Exchange Cycle" className="dash-link" ><i className="tf-icons bx bx-repost"></i></Link></div>
@@ -245,7 +296,7 @@ IsStandOpen && IsloginStand
 }
 { 
 !IsloginStand
-?  <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() }><div className="card-icon"><i className="tf-icons bx bx-lock-open"></i></div><div className="card-title">Stand</div></Link>
+?  <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() }><div className="card-icon"><i className="tf-icons bx bx-lock-open"></i></div><div className="card-title">Open Stand</div></Link>
 : null
 }
 					

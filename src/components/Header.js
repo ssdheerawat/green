@@ -90,7 +90,7 @@ const Header = (props) => {
             
 
             <div className="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-            <img src={logo} alt="Logo" style={{    width: 38, height: 38, borderRadius:25, marginRight:15, backgroundColor:'#fff'}} />
+            <Link to="/green/dashboard" className="dash-link" ><img src={logo} alt="Logo" style={{    width: 38, height: 38, borderRadius:25, marginRight:15, backgroundColor:'#fff'}} /></Link>
         
               <div className="navbar-nav align-items-center nav-title">
                MyBicycles V2<br/>

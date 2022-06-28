@@ -16,6 +16,8 @@ function CyclesList(props) {
 
 
   const [getCyclesList, setCyclesList] = useState([]);
+  const [IsLoad, setIsLoad] = useState(false);
+  
 
   const getCycleListData = async () => {
 
@@ -32,6 +34,7 @@ function CyclesList(props) {
 		//dfdsfd
 
 		setCyclesList(response.data);
+    setIsLoad(true);
 		//console.log("DashboardData",DashboardData);
         
         
@@ -52,6 +55,7 @@ function CyclesList(props) {
 //loginStand
   return (
     <div>
+<div className="card darkcard"><div className="card-header"><h3 className="card-title form-title"><i className="tf-icons bx bx-cycling"></i> Cycles List</h3>  </div></div>
 
 <div className="table-responsive text-nowrap">
                   <table className="table table-bordered">
@@ -63,6 +67,7 @@ function CyclesList(props) {
                                 <th>Status</th>
                               </tr>
                               </thead>
+                              { IsLoad &&
                               <tbody className="table-border-bottom-0">
                               {
                                 getCyclesList.map((item, index) => {
@@ -87,9 +92,21 @@ function CyclesList(props) {
                                 })
                               }
 
+                              {
+                                getCyclesList.length === 0 && 
+                                <tr><td className="text-center" colSpan={4}>No Record Found!</td></tr>
+                              }
+
                             </tbody>
+                            }
                           </table>
                           </div>
+
+                          {!IsLoad &&
+
+                          <div className="text-center"><img  src="assets/img/bicycle.gif" alt="Loading...." style={{width: '100%',
+                          maxWidth: '300px'}} /></div>
+                          }
 
 
 	

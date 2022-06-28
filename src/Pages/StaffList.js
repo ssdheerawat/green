@@ -16,6 +16,7 @@ function StaffList(props) {
 
 
   const [Records, setRecords] = useState([]);
+  const [IsLoad, setIsLoad] = useState(false);
 
   const getCycleListData = async () => {
 
@@ -32,6 +33,7 @@ function StaffList(props) {
 		//dfdsfd
 
 		setRecords(response.data);
+    setIsLoad(true);
 		//console.log("DashboardData",DashboardData);
         
         
@@ -66,6 +68,7 @@ function StaffList(props) {
       
                               </tr>
                               </thead>
+                              { IsLoad &&
                               <tbody className="table-border-bottom-0">
                               {
                                 Records.map((item, index) => {
@@ -83,7 +86,7 @@ function StaffList(props) {
 
                                   let status = 0;
 
-                                  if(item.out_time === "") {
+                                  if(item.out_time === "" || item.out_time=== null) {
                                     status = 1;
                                   }
                                   else {
@@ -110,9 +113,21 @@ function StaffList(props) {
                                 })
                               }
 
+                              {
+                                Records.length === 0 && 
+                                <tr><td className="text-center" colSpan={4}>No Record Found!</td></tr>
+                              }
+
                             </tbody>
+                            }
                           </table>
                           </div>
+
+                          {!IsLoad &&
+
+                            <div className="text-center"><img  src="assets/img/bicycle.gif" alt="Loading...." style={{width: '100%',
+                            maxWidth: '300px'}} /></div>
+                            }
 
 
 	
