@@ -8,6 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
+//import Alert from 'react-popup-alert'
+
 
 
 
@@ -16,12 +18,14 @@ const QRCodeBox = (props) => {
 
   let navigate = useNavigate();
   const streamRef = useRef(null);
-  const [data, setData] = useState('No result');
+  const [data, setData] = useState('');
+  const [QrCode, setQrCode] = useState('');
 
 
   const [on, toggle] = useTorchLight(streamRef.current);
   const [IsQRloading, setIsQRloading] = useState(false);
   const [TransferList, setTransferList] = useState([]);
+
 
 
 
@@ -350,11 +354,27 @@ const QRCodeBox = (props) => {
       }
   };
 
+  const CheckQrCodeAPI = async (qrCode) => {
+
+    const response = await api({
+      url: 'staff/check_qr_code',
+      methode: "POST",
+      data: {"qrCode": qrCode},
+    });
+
+    if (response.status) {
+      setQrCode(response.data.qrCode);
+    }else {
+        toast.error(response.message);
+      }
+  };
+
+  
   
 
   
 
-
+  //CheckQrCodeAPI('c3RhbmRfNQ==');
   if(qrtype === 'stand') {
     //SelfAtendanceAPI('c3RhbmRfNQ==', qrtype, qraction );
     /// StandOpenAPI('c3RhbmRfNQ==', qrtype, qraction );
@@ -429,11 +449,21 @@ const QRCodeBox = (props) => {
     <h6 className="card-subheader">{heading}</h6>
     <div className='card1' style={{width:300, height:250, align:'center', margin:'auto'}}>
 
+
+
+
+      {QrCode && 
+      <div>QR Code:  {QrCode}</div> 
+      }
+
     
 
     {IsQRloading ? <div className="loadingQr">
     <div>Please Wait....</div>
   </div> :
+
+
+
 
 <QrReader
 constraints={{
@@ -480,6 +510,10 @@ onResult={(result, error) => {
           }
           else if(qrtype === 'cycle' && qraction==="exchange_new" ) {
             ExchangeCycleAPI(result?.text, position.coords );
+          }
+          else if(qrtype === 'qr' && qraction==="qrCheck" ) {
+            //setQrCode(result?.text );
+            CheckQrCodeAPI(result?.text );
           }
 
 

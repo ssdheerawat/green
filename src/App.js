@@ -21,6 +21,7 @@ import CyclesListOnroad from './Pages/CyclesListOnroad';
 import TransactionList from './Pages/TransactionList';
 import StandsList from './Pages/StandsList';
 import StaffList from './Pages/StaffList';
+import QrCheck from './Pages/QrCheck';
 
 import Login from './Pages/Login';
 import ChangePassword from './Pages/ChangePassword';
@@ -51,6 +52,7 @@ function App() {
                       
                       
                    
+                        <Route exact path="green/qr-check" element={<QrCheck />} />
                         <Route exact path="green/self-atendance" element={<SelfAtendance />} />
                         <Route exact path="green/exchange" element={<Exchange />} />
                         <Route exact path="green/exchangeapi" element={<ExchangeAPI />} />

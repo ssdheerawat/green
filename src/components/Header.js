@@ -93,7 +93,7 @@ const Header = (props) => {
             <Link to="/green/dashboard" className="dash-link" ><img src={logo} alt="Logo" style={{    width: 38, height: 38, borderRadius:25, marginRight:15, backgroundColor:'#fff'}} /></Link>
         
               <div className="navbar-nav align-items-center nav-title">
-               MyBicycles V2<br/>
+               MyBicycles V3<br/>
                <small style={{fontSize:10}}>{date.toLocaleTimeString('en-IN', {timeZone: 'Asia/Kolkata', year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'})}</small>
               </div>
          

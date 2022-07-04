@@ -34,7 +34,7 @@ function StaffList(props) {
 
 		setRecords(response.data);
     setIsLoad(true);
-		//console.log("DashboardData",DashboardData);
+		
         
         
     }else {
@@ -50,7 +50,7 @@ function StaffList(props) {
 	  getCycleListData();
   }, []);
 
-  
+  console.log("Records",Records);
 //loginStand
   return (
     <div>
@@ -68,9 +68,10 @@ function StaffList(props) {
       
                               </tr>
                               </thead>
-                              { IsLoad &&
+                             
                               <tbody className="table-border-bottom-0">
-                              {
+                              { 
+
                                 Records.map((item, index) => {
 
                                   var today = new Date().toLocaleDateString('en-CA');
@@ -119,7 +120,7 @@ function StaffList(props) {
                               }
 
                             </tbody>
-                            }
+                            
                           </table>
                           </div>
 

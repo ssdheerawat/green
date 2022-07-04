@@ -7,6 +7,8 @@ import Cookies from "js-cookie";
 import { api } from "../api";
 import { useNavigate } from "react-router-dom";
 //import loadingImg from '../assets/img/loader.gif';
+import { Modal } from "../components/Modal";
+
 
 //import Popup from 'reactjs-popup';
 //import 'reactjs-popup/dist/index.css';
@@ -23,6 +25,7 @@ function Dashboard() {
   const [IsloginStand, setIsloginStand] = useState(false);
   const [IsStandOpen, setIsIsStandOpen] = useState(false);
   const [DashboardData, setDashboardData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
   //const [StandAccess, setStandAccess] = useState([]);
   
   const getDashboardData = async (qrCode, qrtype, qraction) => {
@@ -140,13 +143,16 @@ function Dashboard() {
 
 
 
-
+  const openModal = () => {
+    setShowModal(true);
+  };
   
 //loginStand
   return (
     <div>
 
-
+<button onClick={openModal}>Open Modal</button>
+      {showModal ? <Modal setShowModal={setShowModal} modelHtml="Hello <br/>hi" /> : null}
 
 <div className="card darkcard" >
 		<div className="card-header">
@@ -285,37 +291,59 @@ IsStandOpen && IsloginStand
 
 
 			{ IsloginStand ? 
-			<div>
-			<div className="d-flex flex-wrap dashcard" id="icons-container">
-                <div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2">
-				<Link   to={{pathname: '/green/cycles',status:1}} > 
-                  <div className="card-body">
-                    <i className="bx bxl-adobe mb-2"></i>
-                    <p className="icon-name text-capitalize text-truncate mb-0">Total Cycle</p>
-                    <p className="icon-name text-capitalize text-truncate mb-0">{DashboardData.totalCycle}</p>
-                  </div>
-				  </Link>
-                </div>
-                <div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2">
-				<Link   to={{pathname: '/green/cycles',status:1}} > 
-                  <div className="card-body">
-                    <i className="bx bxl-algolia mb-2"></i>
-                    <p className="icon-name text-capitalize text-truncate mb-0">On Road</p>
-                    <p className="icon-name text-capitalize text-truncate mb-0">{DashboardData.totalOnroad}</p>
-                  </div>
-				  </Link>
-                </div>
-                <div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2">
-				<Link   to={{pathname: '/green/cycles',status:1}} > 
-                  <div className="card-body">
-                    <i className="bx bxl-audible mb-2"></i>
-                    <p className="icon-name text-capitalize text-truncate mb-0">Stock</p>
-                    <p className="icon-name text-capitalize text-truncate mb-0">{DashboardData.totalStock}</p>
-                  </div>
-				  </Link>
-                </div>
-				</div>
 
+			
+			<div>
+
+				<table className="table-borderless mb-4" style={{width:"100%"}}>
+					<tr>
+						<td className="text-center mb-4">
+							<Link to="/green/cycles" className="dash-link">
+							<button type="button" className="btn btn-primary">
+							Cycle List <br/> ({DashboardData.totalCycle})
+                            </button>
+							</Link>
+						</td>
+						<td className="text-center">
+							
+							<button type="button" className="btn btn-primary">
+							Event <br/>Issue
+                            </button>
+							
+						</td>
+						<td className="text-center">
+							
+							<button type="button" className="btn btn-primary">
+							Event <br/>Receive
+                            </button>
+							
+						</td>
+					</tr>
+
+					<tr>
+					<td className="text-center">
+							<Link to="/green/qr-check" className="dash-link">
+							<button type="button" className="btn btn-primary">
+							QR <br/>Check
+                            </button>
+							</Link>
+						</td>
+						<td className="text-center">
+							
+							<button type="button" className="btn btn-primary">
+							Summary <br/><br/>
+                            </button>
+							
+						</td>
+						<td className="text-center">
+							
+							<button type="button" className="btn btn-primary">
+							Cycle<br/>Movement
+                            </button>
+							
+						</td>
+					</tr>
+				</table>
 
 				<div>
 				<div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2 staffDutyList">
