@@ -166,3 +166,9 @@ code {
         transform: scale(1);
       }
     }
+
+    .DashboardPage .Toastify__toast--success .Toastify__toast-body{text-align: center;display: block;width: 100%;}
+    .DashboardPage .Toastify__toast--success .Toastify__toast-body div{white-space: break-spaces;}
+    .DashboardPage .Toastify__toast--success .Toastify__toast-body .Toastify__toast-icon{    text-align: center;
+      margin: auto;min-width: 50px;padding-bottom: 15px;}
+    

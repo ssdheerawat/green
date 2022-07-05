@@ -114,6 +114,19 @@ function Dashboard() {
 
 
 	console.log(userDetail);
+
+
+
+	/*toast.success('Cycle No. 2323 \n Issued To \n Hello World ', {
+		position: "top-center",
+		autoClose: false,
+		hideProgressBar: true,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+		});
+		*/
 	
 
 	
@@ -121,7 +134,15 @@ function Dashboard() {
 	let successMsg = Cookies.get("successMsg");
 
 	if(successMsg !== "") {
-		toast.success(successMsg);
+		toast.success(successMsg, {
+			position: "top-center",
+			autoClose: false,
+			hideProgressBar: true,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			});
 		Cookies.set(
 			"successMsg",
 			""
@@ -149,7 +170,7 @@ function Dashboard() {
   
 //loginStand
   return (
-    <div>
+    <div className="DashboardPage">
 
 <button onClick={openModal}>Open Modal</button>
       {showModal ? <Modal setShowModal={setShowModal} modelHtml="Hello <br/>hi" /> : null}
