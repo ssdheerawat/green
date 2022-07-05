@@ -64,7 +64,7 @@ function StandsList(props) {
                               <tr>
                                 <th>S.No</th>
                                 <th>Stand Name</th>
-                                <th>Short Name</th>
+                                <th>Cycles</th>
                                 <th>Status</th>
                                 <th>Date</th>
       
@@ -91,9 +91,9 @@ function StandsList(props) {
                                   return (
                              
                                       <tr key={index} className={"status" + item.status + " " + udate}>
-                                        <td> {index+1} </td>
-                                        <td> {item.title} </td>
-                                        <td> {item.short_title} </td>
+                                        <td>{index+1} </td>
+                                        <td>{item.title} ({item.short_title})</td>
+                                        <td>{item.standCount}</td>
                                         <td> 
                                       
 

@@ -172,7 +172,7 @@ function Dashboard() {
   return (
     <div className="DashboardPage">
 
-<button onClick={openModal}>Open Modal</button>
+<button style={{display:'none'}} onClick={openModal}>Open Modal</button>
       {showModal ? <Modal setShowModal={setShowModal} modelHtml="Hello <br/>hi" /> : null}
 
 <div className="card darkcard" >

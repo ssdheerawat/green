@@ -3,7 +3,7 @@ import Moment from 'react-moment';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api } from "../api";
-
+//import { Link } from "react-router-dom";
 
 function CyclesListOnroad(props) {
 
@@ -88,12 +88,20 @@ function CyclesListOnroad(props) {
                                   return (
                              
                                       <tr key={index}>
-                                        <td> {index+1}</td>
-                                        <td> {item?.stand_from_data?.title}</td>
-                                        <td> {item?.issued_by_data?.staff_id}</td>
-                                        <td> {item?.user?.fullname}</td>
+                                        <td>{index+1}</td>
+                                        <td>
+                                            {item?.stand_from_data?.title} 
+                                        </td>
+                                        <td>{item?.issued_by_data?.staff_id}</td>
+                                        <td>
+                                            {item?.user?.fullname} 
+                                            &nbsp;&nbsp;
+                                            { 
+                                              resultInMinutes >= 30 && <a href="tel:+91{item?.user?.phone}"><i className="tf-icons bx bx-phone-call"></i></a>
+                                            }
+                                          </td>
                                         
-                                        <td> {item.cycle_id}</td>
+                                        <td>{item.cycle_id}</td>
                                         <td> 
                                             <Moment date={item.DateFrom} format="DD/MM/YYYY hh:mm A" />
                                             
