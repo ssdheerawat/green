@@ -22,6 +22,7 @@ import TransactionList from './Pages/TransactionList';
 import StandsList from './Pages/StandsList';
 import StaffList from './Pages/StaffList';
 import QrCheck from './Pages/QrCheck';
+import Summary from './Pages/Summary';
 
 import Login from './Pages/Login';
 import ChangePassword from './Pages/ChangePassword';
@@ -70,6 +71,7 @@ function App() {
                         <Route exact path="green/transaction" element={<TransactionList />} />
                         <Route exact path="green/stands" element={<StandsList />} />
                         <Route exact path="green/staff" element={<StaffList />} />
+                        <Route exact path="green/summary" element={<Summary />} />
                         
 
                         <Route exact path="green" element={<Login />} />

@@ -314,7 +314,8 @@ IsStandOpen && IsloginStand
 			{ IsloginStand ? 
 
 			
-			<div>
+			<div >
+			<div className="suparvisorButtons">
 
 				<table className="table-borderless mb-4" style={{width:"100%"}}>
 					<tr>
@@ -350,10 +351,11 @@ IsStandOpen && IsloginStand
 							</Link>
 						</td>
 						<td className="text-center">
-							
+							<Link to="/green/summary" className="dash-link">
 							<button type="button" className="btn btn-primary">
 							Summary <br/><br/>
                             </button>
+							</Link>
 							
 						</td>
 						<td className="text-center">
@@ -365,6 +367,7 @@ IsStandOpen && IsloginStand
 						</td>
 					</tr>
 				</table>
+				</div>
 
 				<div>
 				<div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2 staffDutyList">

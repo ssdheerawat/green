@@ -105,9 +105,12 @@ code {
                   50% 50% no-repeat rgb(249,249,249);
     }
 
-    .standsList .status1.yesterday{color: red;}
+    
     .standsList .status1{color: blue;}
     .standsList .status2{color: green;}
+    .standsList .status1.yesterday{color: red;}
+    .standsList .status2.yesterday{color: red;}
+
     .popup-content{max-width: 215px !important;}
     .popup-content ul{list-style: none;padding: 0;}
     .popup-content ul li{border-bottom: 1px solid gainsboro;
@@ -117,6 +120,9 @@ code {
 
     .staffDutyList .card-header{padding: 5px;}
     .staffDutyList .card-body{padding-bottom: 5px;}
+
+    .suparvisorButtons{    margin: 8px;}
+    .suparvisorButtons button{width: 100%;}
 
 
     #portal .container {

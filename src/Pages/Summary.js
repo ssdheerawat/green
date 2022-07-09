@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from "react";
-import Moment from 'react-moment';
+//import Moment from 'react-moment';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api } from "../api";
 
 
-function StandsList(props) {
+function Summary(props) {
 
     console.log("props",props);
 	
@@ -21,7 +21,7 @@ function StandsList(props) {
   const getCycleListData = async () => {
 
     const response = await api({
-      url: 'staff/stands',
+      url: 'staff/summary',
       methode: "POST",
       data: {"status": "1"},
     });
@@ -56,18 +56,16 @@ function StandsList(props) {
   return (
     <div>
 
-<div className="card darkcard"><div className="card-header"><h3 className="card-title form-title"><i className="tf-icons bx bx-cycling"></i> Stand Status  </h3></div></div>
+<div className="card darkcard"><div className="card-header"><h3 className="card-title form-title"><i className="tf-icons bx bx-cycling"></i> Transaction Summary Report  </h3></div></div>
 
 <div className="table-responsive text-nowrap">
                   <table className="table table-bordered standsList">
                     <thead className="table-dark">
                               <tr>
                                 <th>S.No</th>
-                                <th>Stand Name</th>
-                                <th>Cycles</th>
-                                <th>Status</th>
-                                <th>Date</th>
-      
+                                <th>Group Name</th>
+                                <th>Fleet Size</th>
+                                <th>Total Trips</th>
                               </tr>
                               </thead>
                               { IsLoad &&
@@ -75,56 +73,16 @@ function StandsList(props) {
                               {
                                 Records.map((item, index) => {
 
-                                  var today = new Date().toLocaleDateString('en-CA');
-                                  var today2 = new Date(item.updated_at).toLocaleDateString('en-CA');
-                                  console.log(today +"  "+ today2);
-                                  let udate = '';
-                                  if(today2 < today) {
-                                     udate = 'yesterday';
-                                  }
-                                  else {
-                                     udate = 'today';
-                                  }
-
-
+                               
 
                                   return (
                              
-                                      <tr key={index} className={"status" + item.status + " " + udate}>
+                                      <tr key={index} className={"status"}>
                                         <td>{index+1} </td>
-                                        <td>{item.title} ({item.short_title})</td>
-                                        <td>{item.standCount}</td>
-                                        <td> 
-                                      
-
-<div>
-      {(() => {
-        if (item.status === 1 ) {
-          return (
-            <div>Opened</div>
-          )
-        } else if (item.status === 2 && udate === 'yesterday') {
-          return (
-            <div>Not Opened</div>
-          )
-        }
-        else if (item.status === 2 ) {
-          return (
-            <div>Closed</div>
-          )
-        }
-         else {
-          return (
-            <div>N/A</div>
-          )
-        }
-      })()}
-      </div>
-                                          
-                                         </td>
-                                        <td> <Moment date={item.updated_at} format="DD/MM/YYYY hh:mm A" /></td>
+                                        <td>{item.title}</td>
+                                        <td>{item.totalcycle}</td>
+                                        <td>{item.onroadcycle}</td>
                                        
-                                        
                                       </tr>
                              
                                   )
@@ -164,4 +122,4 @@ function StandsList(props) {
   );
 }
 
-export default StandsList;
+export default Summary;
