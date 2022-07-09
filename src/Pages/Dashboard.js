@@ -411,26 +411,40 @@ IsStandOpen && IsloginStand
 			{ (DashboardData?.role_id === 1 || DashboardData?.role_id === 2 || DashboardData?.role_id === 3) &&
 			
 			
-			<div className="card">
-				<div className="card-body">
-					<div className="row">
-						<div className="col-6 col-sm-6">
-							<Link to="/green/stands" className="dash-link">
+
+			<div className="suparvisorButtons">
+
+				<table className="table-borderless mb-4" style={{width:"100%"}}>
+					<tr>
+						<td className="text-center mb-4">
+						<Link to="/green/stands" className="dash-link">
 							<button type="button" className="btn btn-primary">
-                              <span className="tf-icons bx bx-pie-chart-alt"></span>&nbsp; Stand Status
+                              Stand <br/> Status
                             </button>
 							</Link>
-							</div>
-						<div className="col-6 col-sm-6">
+						</td>
+						<td className="text-center">
+							
 						<Link to="/green/staff" className="dash-link">
 							<button type="button" className="btn btn-primary">
-                              <span className="tf-icons bx bx-pie-chart-alt"></span>&nbsp; Staff OnDuty
+                              Staff <br/> OnDuty
                             </button>
 							</Link>
-							</div>
-					</div>
+							
+						</td>
+						<td className="text-center">
+						<Link to="/green/login-report" className="dash-link">
+							<button type="button" className="btn btn-primary">
+							Log <br/> Report
+                            </button>
+							</Link>
+							
+						</td>
+					</tr>
+
+				</table>
 				</div>
-			</div>
+		
 			}
 
 
