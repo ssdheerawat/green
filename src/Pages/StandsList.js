@@ -65,7 +65,7 @@ function StandsList(props) {
                                 <th>S.No</th>
                                 <th>Stand Name</th>
                                 <th>Cycles</th>
-                                <th>Status</th>
+                                <th>Staff</th>
                                 <th>Date</th>
       
                               </tr>
@@ -94,33 +94,8 @@ function StandsList(props) {
                                         <td>{index+1} </td>
                                         <td>{item.title} ({item.short_title})</td>
                                         <td>{item.standCount}</td>
-                                        <td> 
-                                      
-
-<div>
-      {(() => {
-        if (item.status === 1 ) {
-          return (
-            <div>Opened</div>
-          )
-        } else if (item.status === 2 && udate === 'yesterday') {
-          return (
-            <div>Not Opened</div>
-          )
-        }
-        else if (item.status === 2 ) {
-          return (
-            <div>Closed</div>
-          )
-        }
-         else {
-          return (
-            <div>N/A</div>
-          )
-        }
-      })()}
-      </div>
-                                          
+                                        <td>{item?.actionstaff?.fullname}
+                                        
                                          </td>
                                         <td> <Moment date={item.updated_at} format="DD/MM/YYYY hh:mm A" /></td>
                                        
