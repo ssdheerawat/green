@@ -102,7 +102,7 @@ const Login = (props) => {
               <div className="app-brand justify-content-center">
                
               
-                  <div className="card mb-3">
+                  <div className="card mb-3" style={{width:100, borderRadius:45}}>
                     <img className="card-img-top" src={logo} alt="Card cap" />
 
                       </div>

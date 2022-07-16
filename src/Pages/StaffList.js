@@ -26,14 +26,14 @@ function StaffList(props) {
       data: {"status": "1"},
     });
 
-    console.log("response===", response);
+    console.log("response===", response.data);
     
 
     if (response.status) {
 		//dfdsfd
 
-		setRecords(response.data);
-    setIsLoad(true);
+      setRecords(response.data);
+      setIsLoad(true);
 		
         
         
@@ -68,11 +68,13 @@ function StaffList(props) {
       
                               </tr>
                               </thead>
+
+                              { IsLoad &&
                              
                               <tbody className="table-border-bottom-0">
                               { 
 
-                                Records.map((item, index) => {
+                        Records.map((item, index) => {
 
                                   var today = new Date().toLocaleDateString('en-CA');
                                   var today2 = new Date(item.updated_at).toLocaleDateString('en-CA');
@@ -120,6 +122,7 @@ function StaffList(props) {
                               }
 
                             </tbody>
+                            }
                             
                           </table>
                           </div>
