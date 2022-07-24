@@ -52,8 +52,9 @@ function Dashboard() {
         }
 
 		Cookies.set( "loginStand",  response.data.loginStand );
+		Cookies.set( "loginStandId",  response.data.loginStandId );
 
-		
+		//loginStand
 
 		setDashboardData(response.data);
 

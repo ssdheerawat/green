@@ -3,6 +3,10 @@ import Moment from 'react-moment';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api } from "../api";
+import Cookies from "js-cookie";
+//import Select from "react-dropdown-select";
+//standAccess
+
 
 
 function TransactionList(props) {
@@ -14,16 +18,24 @@ function TransactionList(props) {
   //let { id } = useParams();
   
 
-
+  let loginStandId = Cookies.get("loginStandId");
   const [Transactions, setTransactions] = useState([]);
   const [IsLoad, setIsLoad] = useState(false);
+  const [standId, setValues] = useState(loginStandId);
 
-  const getCycleListData = async () => {
+  let standAccess = JSON.parse( Cookies.get("userDetail")).standAccess;
+
+
+  
+
+  console.log(standAccess);
+  
+  const getCycleListData = async (standId) => {
 
     const response = await api({
       url: 'staff/rides',
       methode: "POST",
-      data: {"status": "1"},
+      data: {"status": "1", "standId":standId},
     });
 
     console.log("response===", response);
@@ -44,24 +56,43 @@ function TransactionList(props) {
   };
   //standOpen
   useEffect(() => {
+    setIsLoad(false);
+	  getCycleListData(standId);
+  }, [standId]);
 
 
 
-	  getCycleListData();
-  }, []);
+  useEffect(() => {
 
-  
+    //let loginStandId = Cookies.get("loginStandId");
+    setValues(loginStandId);
+
+    console.log("loginStandId",loginStandId);
+
+  }, [loginStandId]);
+
+  console.log(standId);
+
+
 //loginStand
+
   return (
     <div>
 
 <div className="card darkcard"><div className="card-header"><h3 className="card-title form-title"><i className="tf-icons bx bx-cycling"></i> Transactions</h3>  </div></div>
+<div>
 
+
+<select onChange={(e) => setValues(e.target.value || null)} value={standId} className="form-control">
+        {Object.keys(standAccess).map((key) => (
+				  <option value={key} key={key}>{standAccess[key]}</option>
+				))}
+      </select>
+</div>
 <div className="table-responsive text-nowrap">
                   <table className="table table-bordered standsList">
                     <thead className="table-dark">
                               <tr>
-                                <th>S.No</th>
                                 <th>Cycle No.</th>
                                 <th>Customer</th>
                                 <th>Stand</th>
@@ -74,14 +105,17 @@ function TransactionList(props) {
                               { IsLoad &&
                               <tbody className="table-border-bottom-0">
                               {
-                                Transactions.map((item, index) => {
+                                Transactions.rows.map((item, index) => {
+
+                                  
+                               
+                                  
                                   return (
                              
-                                      <tr key={index} className={"status" + item.status}>
-                                        <td> {index+1} </td>
+                                      <tr key={index} className={"status_" + item.type}>
                                         <td> {item.cycle_id} </td>
                                         <td> {item?.user?.fullname} </td>
-                                        <td> {item?.stand_from_data?.title} </td>
+                                        <td> {item?.stand_from_data?.short_title} </td>
                                         <td> <Moment date={item.DateFrom} format="DD/MM/YYYY hh:mm A" /></td>
                                         <td>{item.status ===1 ? item.TotalMinute + " M" : '--'}</td>
                                         <td>{item.status ===1 ? "Rs."+ item.FareDeducted : '--'}</td>
@@ -92,13 +126,28 @@ function TransactionList(props) {
                                 })
                               }
 
-                            {
-                                Transactions.length === 0 && 
-                                <tr><td className="text-center" colSpan={7}>No Record Found!</td></tr>
+                             {
+                                Transactions.rows.length === 0 && 
+                                <tr><td className="text-center" colSpan={6}>No Record Found!</td></tr>
                               }
 
                             </tbody>
+
+                            
+
                             }
+
+{IsLoad &&
+                            <tfoot style={{backgroundColor:'#17a2b83d'}}>
+                              <tr>
+                                <td colSpan={2}>Issue: {Transactions.IssueCycles}</td>
+                                <td colSpan={2}>Deposit: {Transactions.DepositCycles}</td>
+                                <td colSpan={2}>Same Stand: {Transactions.SameStand}</td>
+                              </tr>
+                            </tfoot>
+}
+
+
                           </table>
                           </div>
 

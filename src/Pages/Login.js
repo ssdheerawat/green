@@ -51,7 +51,9 @@ const Login = (props) => {
         //setIsLoading(false);
 
           Cookies.set("user_id", response.data.id);
-
+          Cookies.set("role", response.data.role_id);
+          //Cookies.set("standAccess", response.data.standAccess);
+          //standAccess
           Cookies.set( "userDetail",JSON.stringify(response.data));
 
           Cookies.set("token",response.data.token);

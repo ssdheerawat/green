@@ -154,6 +154,10 @@ function Dashboard() {
 			"loginStand",
 			response.data.title
 		  );
+		  Cookies.set(
+			"loginStandId",
+			newStandId
+		  );
 
         Cookies.set(
           "successMsg",

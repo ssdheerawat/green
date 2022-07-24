@@ -50,6 +50,9 @@ function CyclesListOnroad(props) {
 	  getCycleListData();
   }, []);
 
+
+ 
+
   
 //loginStand
   return (
@@ -84,10 +87,14 @@ function CyclesListOnroad(props) {
                                   
                                   var resultInMinutes = Math.round(difference / 60000)
                                   //console.log(resultInMinutes);
+                                  let status = '';
+                                  if(resultInMinutes >= 30) {
+                                    status = 'deposit';
+                                  }
                                 
                                   return (
                              
-                                      <tr key={index}>
+                                      <tr key={index} className={"status_" + status} >
                                         <td>{index+1}</td>
                                         <td>
                                             {item?.stand_from_data?.title} 

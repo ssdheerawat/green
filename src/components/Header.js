@@ -124,7 +124,16 @@ const Header = (props) => {
                           </div>
                           <div className="flex-grow-1">
                             <span className="fw-semibold d-block">{UserDetail.fullname}</span>
+
+                            { UserDetail?.role_id === 1  ?
+                            <small className="text-muted">Super Admin</small>
+                            : UserDetail?.role_id === 2  ?
+                            <small className="text-muted">Manager</small>
+                            : UserDetail?.role_id === 3  ?
+                            <small className="text-muted">Supervisor</small>
+                            :
                             <small className="text-muted">Stand Attendant</small>
+                            }         
                           </div>
                         </div>
                       

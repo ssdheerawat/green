@@ -113,6 +113,10 @@ code {
     .standsList .status1.yesterday{color: red;}
     .standsList .status2.yesterday{color: red;}
 
+   .status_issue{color: blue;}
+   .status_samestand{color: green;}
+   .status_deposit{color: red;}
+
     .popup-content{max-width: 215px !important;}
     .popup-content ul{list-style: none;padding: 0;}
     .popup-content ul li{border-bottom: 1px solid gainsboro;

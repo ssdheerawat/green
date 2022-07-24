@@ -51,6 +51,15 @@ function Summary(props) {
 	  getCycleListData();
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getCycleListData();
+      console.log('Logs every minute');
+    }, 9000);
+  
+    return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+  }, [])
+
   
 //loginStand
   return (

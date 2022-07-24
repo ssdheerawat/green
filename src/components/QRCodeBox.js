@@ -60,12 +60,22 @@ const QRCodeBox = (props) => {
                 ""
               );
 
+              Cookies.set(
+                "loginStandId",
+                ""
+                );
+
         }
         else {
             Cookies.set(
                 "loginStand",
                 response.data.title
               );
+
+              Cookies.set(
+                "loginStandId",
+                response.data.id
+                );
         }
 
         Cookies.set(

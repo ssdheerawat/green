@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 const AppLinkShare = (props) => {
 
   const [IsActiveScreen, setIsActiveScreen] = useState('android');
-  const [CopyURL, setCopyURL] = useState('');
+  //const [CopyURL, setCopyURL] = useState('');
 
 
   const setActivsScreen = (screen) => {
@@ -17,8 +17,8 @@ const AppLinkShare = (props) => {
 
   async function onShare() {
     const title = "MyBicycles APP";
-    const url = 'https://play.google.com/store/apps/details?id=in.greenride.greenride';
-    const text = "Learn how to use the share api";
+    const url = 'https://play.google.com/store/apps/details?id=com.MyBicycles';
+    const text = "MyBicycles Public Bicycle Sharing Service";
     try {
         await navigator
         .share({
@@ -41,8 +41,15 @@ const AppLinkShare = (props) => {
 
   function copyToClipboard(e) {
 
+    var textField = document.createElement('textarea')
+  textField.innerText = 'https://play.google.com/store/apps/details?id=com.MyBicycles'
+  document.body.appendChild(textField)
+  textField.select()
+  document.execCommand('copy')
+  textField.remove()
+
     
-    setCopyURL('Copied!');
+  alert('Copied!');
   };
 
 
@@ -54,23 +61,23 @@ const AppLinkShare = (props) => {
         <tr>
           <td colSpan={3} style={{textAlign:'center'}}>
           {IsActiveScreen === 'android' ?
-              <img src="assets/img/android.png" alt="..." style={{width:100, height:100}} />
+              <img src="assets/img/android.png" alt="..." style={{width:100, height:100, margin:15}} />
 
               : 
-              <img src="assets/img/ios.png" alt="..." style={{width:100, height:100}} />
+              <img src="assets/img/ios.png" alt="..." style={{width:100, height:100, margin:25}} />
               }
           </td>
         </tr>
 
         <tr>
           <td colSpan={3} style={{textAlign:'center'}}>
-          <img src="assets/img/GreenRideAPP.png" alt="..." style={{width:180}} />
+          <img src="assets/img/GreenRideAPP.png" alt="..." style={{width:180, marginBottom:25}} />
           </td>
         </tr>
         <tr>
-          <td style={{textAlign:'center'}}><button onClick={()=>onShare()} ><i className="tf-icons bx bx-share-alt"></i></button></td>
-          <td style={{textAlign:'center'}}><button onClick={()=>copyToClipboard()} ><i className="tf-icons bx bx-phone"></i></button></td>
-          <td style={{textAlign:'center'}}><button onClick={()=>copyToClipboard()} ><i className="tf-icons bx bx-copy"></i></button>{CopyURL}</td>
+          <td style={{textAlign:'center'}}><button className='btn btn-icon btn-outline-primary' onClick={()=>onShare()} ><i className="tf-icons bx bx-share-alt"></i></button></td>
+          <td style={{textAlign:'center'}}><a className='btn btn-icon btn-outline-primary' href="tel:+919312237612"> <i className="tf-icons bx bx-phone"></i> </a></td>
+          <td style={{textAlign:'center'}}><button className='btn btn-icon btn-outline-primary' onClick={()=>copyToClipboard()} ><i className="tf-icons bx bx-copy"></i></button></td>
         </tr>
       </table>
 
