@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { api } from "../api";
 
 import Cookies from "js-cookie";
@@ -9,6 +9,9 @@ import logo from '../logo.png';
 
 
 const ChangePassword = (props) => {
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
 
     let navigate = useNavigate();
 
@@ -67,7 +70,13 @@ const ChangePassword = (props) => {
 
   // Generate JSX code for error message
 
+  function handleShowHidePassword() {
+    setShowPassword(!showPassword);
+  }
 
+  function handleShowHidePassword2() {
+    setShowPassword2(!showPassword2);
+  }
 
   return (
     <>
@@ -103,7 +112,7 @@ const ChangePassword = (props) => {
                   </div>
                   <div className="input-group input-group-merge">
                     <input
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       id="password"
                       className="form-control"
                       name="password"
@@ -111,7 +120,14 @@ const ChangePassword = (props) => {
                       aria-describedby="password"
                     />
                   
-                    <span className="input-group-text cursor-pointer"><i className="bx bx-hide"></i></span>
+                  <span className="input-group-text cursor-pointer" onClick={() => handleShowHidePassword()}>
+                      {showPassword ? 
+                      <i className="bx bx-show"></i>
+                      :
+                      <i className="bx bx-hide"></i>
+                      }
+                      </span>
+
                   </div>
                 </div>
 
@@ -121,7 +137,7 @@ const ChangePassword = (props) => {
                   </div>
                   <div className="input-group input-group-merge">
                     <input
-                      type="password"
+                      type={showPassword2 ? "text" : "password"}
                       id="password_confirmation"
                       className="form-control"
                       name="password_confirmation"
@@ -129,7 +145,13 @@ const ChangePassword = (props) => {
                       aria-describedby="password"
                     />
                   
-                    <span className="input-group-text cursor-pointer"><i className="bx bx-hide"></i></span>
+                    <span className="input-group-text cursor-pointer" onClick={() => handleShowHidePassword2()}>
+                      {showPassword2 ? 
+                      <i className="bx bx-show"></i>
+                      :
+                      <i className="bx bx-hide"></i>
+                      }
+                      </span>
                   </div>
                 </div>
                

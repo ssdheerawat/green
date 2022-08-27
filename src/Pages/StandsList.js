@@ -94,7 +94,7 @@ function StandsList(props) {
                                         <td>{index+1} </td>
                                         <td>{item.title} ({item.short_title})</td>
                                         <td>{item.standCount}</td>
-                                        <td>{item?.actionstaff?.fullname}
+                                        <td>{item?.staffName}
                                         
                                          </td>
                                         <td> <Moment date={item.updated_at} format="DD/MM/YYYY hh:mm A" /></td>

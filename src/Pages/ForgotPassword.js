@@ -13,7 +13,8 @@ const ForgotPassword = (props) => {
     let navigate = useNavigate();
     const [IsOTPSend, SetIsOTPSend] = useState(false);
     const [MobileNo, SetMobileNo] = useState("");
-
+    const [otp, setOTP] = useState("");
+    
     useEffect(() => {
         let token = Cookies.get("token");
         if (token) {
@@ -105,6 +106,11 @@ const ForgotPassword = (props) => {
 
   };
 
+  const handleOTPChange = event => {
+    setOTP(event.target.value);
+    console.log('value is:', event.target.value);
+  };
+
 
 
  
@@ -144,16 +150,17 @@ const ForgotPassword = (props) => {
 <h4 className="mb-2 text-center">Verify OTP</h4>
 <p className="mb-4 text-center">Enter your OTP</p>
 
-<form id="formAuthentication" className="mb-3" onSubmit={handleVerifyOTP} method="POST">
+<form id="formAuthenticationOtp" className="mb-3" onSubmit={handleVerifyOTP} method="POST">
   <div className="mb-3 text-left" >
     <label className="form-label">Enter OTP</label>
     <input
       type="text"
       className="form-control"
-      id="otp"
       name="otp"
       placeholder="Enter your OTP"
       maxLength={4}
+      onChange={handleOTPChange}
+      value={otp}
       required
     />
 
@@ -181,7 +188,6 @@ const ForgotPassword = (props) => {
                     id="mobile"
                     name="mobile"
                     placeholder="Enter your Mobile No"
-             
                     required
                   />
               

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { api } from "../api";
 
 import Cookies from "js-cookie";
@@ -9,6 +9,8 @@ import logo from '../logo.png';
 
 
 const Login = (props) => {
+
+    const [showPassword, setShowPassword] = useState(false);
 
     let navigate = useNavigate();
 
@@ -88,6 +90,11 @@ const Login = (props) => {
 
 };
 
+
+function handleShowHidePassword() {
+  setShowPassword(!showPassword);
+}
+
   // Generate JSX code for error message
 
 
@@ -136,12 +143,12 @@ const Login = (props) => {
                   <div className="d-flex justify-content-between">
                     <label className="form-label" >Password</label>
                    
-                      <small onClick={()=>ForgotPassword()}>Forgot Password?</small>
+                      <small style={{'cursor':'pointer'}} onClick={()=>ForgotPassword()}>Forgot Password?</small>
                     
                   </div>
                   <div className="input-group input-group-merge">
                     <input
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       id="password"
                       className="form-control"
                       name="pass"
@@ -149,7 +156,14 @@ const Login = (props) => {
                       aria-describedby="password"
                     />
                   
-                    <span className="input-group-text cursor-pointer"><i className="bx bx-hide"></i></span>
+                    <span className="input-group-text cursor-pointer" onClick={() => handleShowHidePassword()}>
+                      {showPassword ? 
+                      <i className="bx bx-show"></i>
+                      :
+                      <i className="bx bx-hide"></i>
+                      }
+                      </span>
+                      
                   </div>
                 </div>
                
