@@ -29,7 +29,7 @@ let menu, animate;
       alert("menuToggler");
       event.preventDefault();
       window.Helpers.toggleCollapsed();
-    });
+    }); 
   });
 
   // Display menu toggle (layout-menu-toggle) on hover with delay
