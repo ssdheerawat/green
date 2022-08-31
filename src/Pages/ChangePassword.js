@@ -18,7 +18,7 @@ const ChangePassword = (props) => {
     useEffect(() => {
         let token = Cookies.get("token");
         if (token) {
-            //navigate("/green/dashboard", { replace: true });
+            //navigate("/dashboard", { replace: true });
         }
       }, [navigate]);
 
@@ -58,7 +58,7 @@ const ChangePassword = (props) => {
             "successMsg",
             response.message
           );
-          navigate("/green/dashboard", { replace: true });
+          navigate("/dashboard", { replace: true });
         
 
       } else {

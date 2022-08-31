@@ -163,7 +163,7 @@ function Dashboard() {
           "successMsg",
           response.message
         );
-        navigate("/green/dashboard", { replace: true });
+        navigate("/dashboard", { replace: true });
     }else {
         
         toast.error(response.message);
@@ -217,7 +217,7 @@ function Dashboard() {
 			}
 
 			</div>
-			<div className="col-2 col-sm-2 txt-right"><Link to="/green/exchange" title="Exchange Cycle" className="dash-link" ><i className="tf-icons bx bx-repost"></i></Link></div>
+			<div className="col-2 col-sm-2 txt-right"><Link to="/exchange" title="Exchange Cycle" className="dash-link" ><i className="tf-icons bx bx-repost"></i></Link></div>
 		</div>
 		:
 		null
@@ -235,7 +235,7 @@ function Dashboard() {
 				<td className="disabledClick">
 { 
 IsloginStand  && IsStandOpen
-?  <Link to="/green/issue" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-cycling"></i></div><div className="card-title">Issue ({DashboardData.issued})</div></Link>
+?  <Link to="/issue" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-cycling"></i></div><div className="card-title">Issue ({DashboardData.issued})</div></Link>
 : <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-cycling"></i></div><div className="card-title">Issue ({DashboardData.issued})</div></Link>
 }
 						
@@ -243,7 +243,7 @@ IsloginStand  && IsStandOpen
 				<td className="disabledClick">
 				{ 
 				IsloginStand  && IsStandOpen
-				?  <Link to="/green/deposit" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-briefcase"></i></div><div className="card-title">Deposit ({DashboardData.deposit})</div></Link>
+				?  <Link to="/deposit" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-briefcase"></i></div><div className="card-title">Deposit ({DashboardData.deposit})</div></Link>
 				: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-briefcase"></i></div><div className="card-title">Deposit ({DashboardData.deposit})</div></Link>
 				}
 
@@ -253,7 +253,7 @@ IsloginStand  && IsStandOpen
 				<td className="disabledClick">
 <Link   to={
        {     
-         pathname: '/green/onroad',
+         pathname: '/onroad',
          status:1
         }
   }
@@ -272,7 +272,7 @@ IsloginStand  && IsStandOpen
 			<td className="disabledClick">
 			{ 
 			IsloginStand
-			?  <Link to="/green/transfer" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-transfer"></i></div><div className="card-title">Transfer ({DashboardData.transfered})</div></Link>
+			?  <Link to="/transfer" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-transfer"></i></div><div className="card-title">Transfer ({DashboardData.transfered})</div></Link>
 			: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-transfer"></i></div><div className="card-title">Transfer ({DashboardData.transfered})</div></Link>
 			}
 
@@ -281,7 +281,7 @@ IsloginStand  && IsStandOpen
 
 					{ 
 					IsloginStand
-					?  <Link to="/green/receive" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-download"></i></div><div className="card-title">Receive ({DashboardData.received})</div></Link>
+					?  <Link to="/receive" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-download"></i></div><div className="card-title">Receive ({DashboardData.received})</div></Link>
 					: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-download"></i></div><div className="card-title">Receive ({DashboardData.received})</div></Link>
 					}
 					
@@ -290,12 +290,12 @@ IsloginStand  && IsStandOpen
 
 { 
 IsStandOpen && IsloginStand
-?  <Link to="/green/stand-inout" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-lock-open"></i></div><div className="card-title">Close Stand</div></Link>
+?  <Link to="/stand-inout" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-lock-open"></i></div><div className="card-title">Close Stand</div></Link>
 : null
 }
 { 
 !IsStandOpen && IsloginStand
-?  <Link to="/green/stand-inout" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-lock-open"></i></div><div className="card-title">Open Stand</div></Link>
+?  <Link to="/stand-inout" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-lock-open"></i></div><div className="card-title">Open Stand</div></Link>
 : null
 }
 { 
@@ -312,13 +312,13 @@ IsStandOpen && IsloginStand
 			<td className="disabledClick">
 				{ 
 				IsloginStand
-				?  <Link to="/green/self-atendance" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-user-check"></i></div><div className="card-title">Attendance Out</div></Link>
-				: <Link to="/green/self-atendance" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-user-check"></i></div><div className="card-title">Self Attendance</div></Link>
+				?  <Link to="/self-atendance" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-user-check"></i></div><div className="card-title">Attendance Out</div></Link>
+				: <Link to="/self-atendance" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-user-check"></i></div><div className="card-title">Self Attendance</div></Link>
 				}
 			
 				</td>
 				<td className="disabledClick">
-						<Link to="/green/transaction" className="dash-link">
+						<Link to="/transaction" className="dash-link">
 								<div className="card-icon">
 									<i className="tf-icons bx bx-wallet-alt"></i>
 								</div>
@@ -326,7 +326,7 @@ IsStandOpen && IsloginStand
 						</Link>
 				</td>
 				<td className="disabledClick">
-						<Link to="/green/app-link" className="dash-link">
+						<Link to="/app-link" className="dash-link">
 								<div className="card-icon">
 									<i className="tf-icons bx bx-share-alt"></i>
 								</div>
@@ -343,7 +343,7 @@ IsStandOpen && IsloginStand
 			<div>
 			<div className="d-flex flex-wrap dashcard" id="icons-container">
                 <div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2">
-				<Link   to={{pathname: '/green/cycles',status:1}} > 
+				<Link   to={{pathname: '/cycles',status:1}} > 
                   <div className="card-body">
                     <i className="bx bxl-adobe mb-2"></i>
                     <p className="icon-name text-capitalize text-truncate mb-0">Total Cycle</p>
@@ -352,7 +352,7 @@ IsStandOpen && IsloginStand
 				  </Link>
                 </div>
                 <div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2">
-				<Link   to={{pathname: '/green/cycles',status:1}} > 
+				<Link   to={{pathname: '/cycles',status:1}} > 
                   <div className="card-body">
                     <i className="bx bxl-algolia mb-2"></i>
                     <p className="icon-name text-capitalize text-truncate mb-0">On Road</p>
@@ -361,7 +361,7 @@ IsStandOpen && IsloginStand
 				  </Link>
                 </div>
                 <div className="card bg-primary text-white icon-card cursor-pointer text-center mb-4 mx-2">
-				<Link   to={{pathname: '/green/cycles',status:1}} > 
+				<Link   to={{pathname: '/cycles',status:1}} > 
                   <div className="card-body">
                     <i className="bx bxl-audible mb-2"></i>
                     <p className="icon-name text-capitalize text-truncate mb-0">Stock</p>
@@ -418,14 +418,14 @@ IsStandOpen && IsloginStand
 				<div className="card-body">
 					<div className="row">
 						<div className="col-6 col-sm-6">
-							<Link to="/green/stands" className="dash-link">
+							<Link to="/stands" className="dash-link">
 							<button type="button" className="btn btn-primary">
                               <span className="tf-icons bx bx-pie-chart-alt"></span>&nbsp; Stand Status
                             </button>
 							</Link>
 							</div>
 						<div className="col-6 col-sm-6">
-						<Link to="/green/staff" className="dash-link">
+						<Link to="/staff" className="dash-link">
 							<button type="button" className="btn btn-primary">
                               <span className="tf-icons bx bx-pie-chart-alt"></span>&nbsp; Staff OnDuty
                             </button>

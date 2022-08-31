@@ -190,7 +190,7 @@ function Dashboard() {
 			
 
 			</div>
-			<div className="col-2 col-sm-2 txt-right"><Link to="/green/exchange" title="Exchange Cycle" className="dash-link" ><i className="tf-icons bx bx-repost"></i></Link></div>
+			<div className="col-2 col-sm-2 txt-right"><Link to="/exchange" title="Exchange Cycle" className="dash-link" ><i className="tf-icons bx bx-repost"></i></Link></div>
 		</div>
 		:
 		null
@@ -208,7 +208,7 @@ function Dashboard() {
 				<td className="disabledClick">
 { 
 IsloginStand  && IsStandOpen
-?  <Link to="/green/issue" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-cycling"></i></div><div className="card-title">Issue ({DashboardData.issued})</div></Link>
+?  <Link to="/issue" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-cycling"></i></div><div className="card-title">Issue ({DashboardData.issued})</div></Link>
 : <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-cycling"></i></div><div className="card-title">Issue ({DashboardData.issued})</div></Link>
 }
 						
@@ -216,7 +216,7 @@ IsloginStand  && IsStandOpen
 				<td className="disabledClick">
 				{ 
 				IsloginStand  && IsStandOpen
-				?  <Link to="/green/deposit" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-briefcase"></i></div><div className="card-title">Deposit ({DashboardData.deposit})</div></Link>
+				?  <Link to="/deposit" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-briefcase"></i></div><div className="card-title">Deposit ({DashboardData.deposit})</div></Link>
 				: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-briefcase"></i></div><div className="card-title">Deposit ({DashboardData.deposit})</div></Link>
 				}
 
@@ -226,7 +226,7 @@ IsloginStand  && IsStandOpen
 				<td className="disabledClick">
 <Link   to={
        {     
-         pathname: '/green/onroad',
+         pathname: '/onroad',
          status:1
         }
   }
@@ -245,7 +245,7 @@ IsloginStand  && IsStandOpen
 			<td className="disabledClick">
 			{ 
 			IsloginStand
-			?  <Link to="/green/transfer" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-transfer"></i></div><div className="card-title">Transfer ({DashboardData.transfered})</div></Link>
+			?  <Link to="/transfer" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-transfer"></i></div><div className="card-title">Transfer ({DashboardData.transfered})</div></Link>
 			: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-transfer"></i></div><div className="card-title">Transfer ({DashboardData.transfered})</div></Link>
 			}
 
@@ -254,7 +254,7 @@ IsloginStand  && IsStandOpen
 
 					{ 
 					IsloginStand
-					?  <Link to="/green/receive" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-download"></i></div><div className="card-title">Receive ({DashboardData.received})</div></Link>
+					?  <Link to="/receive" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-download"></i></div><div className="card-title">Receive ({DashboardData.received})</div></Link>
 					: <Link to="/" className="dash-link disabledCursor" onClick={ (event) => event.preventDefault() } ><div className="card-icon"><i className="tf-icons bx bx-download"></i></div><div className="card-title">Receive ({DashboardData.received})</div></Link>
 					}
 					
@@ -263,12 +263,12 @@ IsloginStand  && IsStandOpen
 
 { 
 IsStandOpen && IsloginStand
-?  <Link to="/green/stand-inout" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-lock-open"></i></div><div className="card-title">Close Stand</div></Link>
+?  <Link to="/stand-inout" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-lock-open"></i></div><div className="card-title">Close Stand</div></Link>
 : null
 }
 { 
 !IsStandOpen && IsloginStand
-?  <Link to="/green/stand-inout" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-lock-open"></i></div><div className="card-title">Open Stand</div></Link>
+?  <Link to="/stand-inout" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-lock-open"></i></div><div className="card-title">Open Stand</div></Link>
 : null
 }
 { 
@@ -285,13 +285,13 @@ IsStandOpen && IsloginStand
 			<td className="disabledClick">
 				{ 
 				IsloginStand
-				?  <Link to="/green/self-atendance" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-user-check"></i></div><div className="card-title">Attendance Out</div></Link>
-				: <Link to="/green/self-atendance" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-user-check"></i></div><div className="card-title">Self Attendance</div></Link>
+				?  <Link to="/self-atendance" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-user-check"></i></div><div className="card-title">Attendance Out</div></Link>
+				: <Link to="/self-atendance" className="dash-link" ><div className="card-icon"><i className="tf-icons bx bx-user-check"></i></div><div className="card-title">Self Attendance</div></Link>
 				}
 			
 				</td>
 				<td className="disabledClick">
-						<Link to="/green/transaction" className="dash-link">
+						<Link to="/transaction" className="dash-link">
 								<div className="card-icon">
 									<i className="tf-icons bx bx-wallet-alt"></i>
 								</div>
@@ -299,7 +299,7 @@ IsStandOpen && IsloginStand
 						</Link>
 				</td>
 				<td className="disabledClick">
-						<Link to="/green/app-link" className="dash-link">
+						<Link to="/app-link" className="dash-link">
 								<div className="card-icon">
 									<i className="tf-icons bx bx-share-alt"></i>
 								</div>
@@ -321,7 +321,7 @@ IsStandOpen && IsloginStand
 				<table className="table-borderless mb-4" style={{width:"100%"}}>
 					<tr>
 						<td className="text-center mb-4">
-							<Link to="/green/cycles" className="dash-link">
+							<Link to="/cycles" className="dash-link">
 							<button type="button" className="btn btn-primary">
 							Cycle List <br/> ({DashboardData.totalCycle})
                             </button>
@@ -345,14 +345,14 @@ IsStandOpen && IsloginStand
 
 					<tr>
 					<td className="text-center">
-							<Link to="/green/qr-check" className="dash-link">
+							<Link to="/qr-check" className="dash-link">
 							<button type="button" className="btn btn-primary">
 							QR <br/>Check
                             </button>
 							</Link>
 						</td>
 						<td className="text-center">
-							<Link to="/green/summary" className="dash-link">
+							<Link to="/summary" className="dash-link">
 							<button type="button" className="btn btn-primary">
 							Summary <br/><br/>
                             </button>
@@ -418,7 +418,7 @@ IsStandOpen && IsloginStand
 				<table className="table-borderless mb-4" style={{width:"100%"}}>
 					<tr>
 						<td className="text-center mb-4">
-						<Link to="/green/stands" className="dash-link">
+						<Link to="/stands" className="dash-link">
 							<button type="button" className="btn btn-primary">
                               Stand <br/> Status
                             </button>
@@ -426,7 +426,7 @@ IsStandOpen && IsloginStand
 						</td>
 						<td className="text-center">
 							
-						<Link to="/green/staff" className="dash-link">
+						<Link to="/staff" className="dash-link">
 							<button type="button" className="btn btn-primary">
                               Staff <br/> OnDuty
                             </button>
@@ -434,7 +434,7 @@ IsStandOpen && IsloginStand
 							
 						</td>
 						<td className="text-center">
-						<Link to="/green/login-report" className="dash-link">
+						<Link to="/login-report" className="dash-link">
 							<button type="button" className="btn btn-primary">
 							Log <br/> Report
                             </button>

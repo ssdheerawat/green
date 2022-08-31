@@ -18,7 +18,7 @@ const ForgotPassword = (props) => {
     useEffect(() => {
         let token = Cookies.get("token");
         if (token) {
-            navigate("/green/dashboard", { replace: true });
+            navigate("/dashboard", { replace: true });
         }
       }, [navigate]);
 
@@ -95,7 +95,7 @@ const ForgotPassword = (props) => {
 
           console.log("response.message",response.message);
           toast.success(response.message);
-          navigate("/green/dashboard", { replace: true });
+          navigate("/dashboard", { replace: true });
 
       } else {
         // setisLoading(flase);

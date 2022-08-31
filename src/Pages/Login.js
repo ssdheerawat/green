@@ -17,7 +17,7 @@ const Login = (props) => {
     useEffect(() => {
         let token = Cookies.get("token");
         if (token) {
-            navigate("/green/dashboard", { replace: true });
+            navigate("/dashboard", { replace: true });
         }
       }, [navigate]);
 
@@ -67,7 +67,7 @@ const Login = (props) => {
 
           console.log("response.message",response.message);
           toast.success(response.message);
-          navigate("/green/dashboard", { replace: true });
+          navigate("/dashboard", { replace: true });
         
         //setBusinessFormData();
       } else {
@@ -86,7 +86,7 @@ const Login = (props) => {
 
   const ForgotPassword = async() => {
 
-    navigate("/green/forgot-password", { replace: true });
+    navigate("/forgot-password", { replace: true });
 
 };
 

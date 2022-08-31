@@ -87,7 +87,7 @@ const QRCodeBox = (props) => {
 
             
         toast.success(response.message);
-        navigate("/green/dashboard", { replace: true });
+        navigate("/dashboard", { replace: true });
     }else {
         
         toast.error(response.message);
@@ -122,7 +122,7 @@ const QRCodeBox = (props) => {
           response.message
         );
         toast.success(response.message);
-        navigate("/green/dashboard", { replace: true });
+        navigate("/dashboard", { replace: true });
     }else {
         setIsQRloading(false);
         toast.error(response.message);
@@ -140,7 +140,7 @@ const QRCodeBox = (props) => {
 
 
 
-    navigate("/green/issueapi", { replace: true });
+    navigate("/issueapi", { replace: true });
 
 
 
@@ -171,7 +171,7 @@ const QRCodeBox = (props) => {
         );
 
         toast.success(response.message);
-        navigate("/green/dashboard", { replace: true });
+        navigate("/dashboard", { replace: true });
     }else {
 
 
@@ -184,7 +184,7 @@ const QRCodeBox = (props) => {
         toast.error(response.message);
 
         // alert("Something went wrong");
-        navigate("/green/issue", { replace: true });
+        navigate("/issue", { replace: true });
       }
   };
 
@@ -208,7 +208,7 @@ const QRCodeBox = (props) => {
       
 
         toast.success(response.message);
-        navigate("/green/dashboard", { replace: true });
+        navigate("/dashboard", { replace: true });
     }else {
         setIsQRloading(false);
         toast.error(response.message);
@@ -296,7 +296,7 @@ const QRCodeBox = (props) => {
       
 
         toast.success(response.message);
-        navigate("/green/dashboard", { replace: true });
+        navigate("/dashboard", { replace: true });
 
     }else {
 
@@ -316,7 +316,7 @@ const QRCodeBox = (props) => {
 
 
 
-    navigate("/green/exchangeapi", { replace: true });
+    navigate("/exchangeapi", { replace: true });
 
 
 
@@ -347,7 +347,7 @@ const QRCodeBox = (props) => {
         );
 
         toast.success(response.message);
-        navigate("/green/dashboard", { replace: true });
+        navigate("/dashboard", { replace: true });
     }else {
 
 
@@ -360,7 +360,7 @@ const QRCodeBox = (props) => {
         toast.error(response.message);
 
         // alert("Something went wrong");
-        navigate("/green/exchange", { replace: true });
+        navigate("/exchange", { replace: true });
       }
   };
 
