@@ -69,7 +69,7 @@ const Header = (props) => {
           Cookies.remove("token");
           setIsLoggedin(false);
 
-          navigate("/green", { replace: true });
+          navigate("/", { replace: true });
 
     
   

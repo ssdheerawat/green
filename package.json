@@ -2,7 +2,7 @@
   "name": "greenride-staff",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ssdheerawat.github.io/green",
+  "homepage": "https://mybicycles.web.app",
   "dependencies": {
     "@blackbox-vision/use-torch-light": "^0.0.2",
     "@fortawesome/fontawesome-free": "^6.1.1",

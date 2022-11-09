@@ -53,31 +53,32 @@ function App() {
                     <Routes>
                       
                       
-                   
-                        <Route exact path="green/qr-check" element={<QrCheck />} />
-                        <Route exact path="green/self-atendance" element={<SelfAtendance />} />
-                        <Route exact path="green/exchange" element={<Exchange />} />
-                        <Route exact path="green/exchangeapi" element={<ExchangeAPI />} />
-                        <Route exact path="green/issue" element={<Issue />} />
-                        <Route exact path="green/issueapi" element={<IssueApi />} />
-                        <Route exact path="green/deposit" element={<Deposit />} />
-                        <Route exact path="green/transfer" element={<Transfer />} />
-                        <Route exact path="green/receive" element={<Receive />} />
-                        <Route exact path="green/stand-inout" element={<StandInOut />} />
-                        <Route exact path="green/app-link" element={<AppLinkShare />} />
-                        <Route exact path="green/onroad" element={<CyclesListOnroad />} />
-                        <Route exact path="green/cycles" element={<CyclesList />} />
-                        <Route exact path="green/change-password" element={<ChangePassword />} />
-                        <Route exact path="green/forgot-password" element={<ForgotPassword />} />
-                        <Route exact path="green/transaction" element={<TransactionList />} />
-                        <Route exact path="green/stands" element={<StandsList />} />
-                        <Route exact path="green/staff" element={<StaffList />} />
-                        <Route exact path="green/summary" element={<Summary />} />
-                        <Route exact path="green/login-report" element={<LoginReport />} />
+                        <Route exact path="/" element={<Login />} />
+                        <Route exact path="qr-check" element={<QrCheck />} />
+                        <Route exact path="self-atendance" element={<SelfAtendance />} />
+                        <Route exact path="exchange" element={<Exchange />} />
+                        <Route exact path="exchangeapi" element={<ExchangeAPI />} />
+                        <Route exact path="issue" element={<Issue />} />
+                        <Route exact path="issueapi" element={<IssueApi />} />
+                        <Route exact path="deposit" element={<Deposit />} />
+                        <Route exact path="transfer" element={<Transfer />} />
+                        <Route exact path="receive" element={<Receive />} />
+                        <Route exact path="stand-inout" element={<StandInOut />} />
+                        <Route exact path="app-link" element={<AppLinkShare />} />
+                        <Route exact path="onroad" element={<CyclesListOnroad />} />
+                        <Route exact path="cycles" element={<CyclesList />} />
+                        <Route exact path="change-password" element={<ChangePassword />} />
+                        <Route exact path="forgot-password" element={<ForgotPassword />} />
+                        <Route exact path="transaction" element={<TransactionList />} />
+                        <Route exact path="stands" element={<StandsList />} />
+                        <Route exact path="staff" element={<StaffList />} />
+                        <Route exact path="summary" element={<Summary />} />
+                        <Route exact path="login-report" element={<LoginReport />} />
                         
 
-                        <Route exact path="green" element={<Login />} />
-                        <Route exact path="/dashboard" element={<Dashboard />} />
+                        <Route exact path="login" element={<Login />} />
+                        
+                        <Route exact path="dashboard" element={<Dashboard />} />
                    
                         
                         <Route
